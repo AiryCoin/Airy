@@ -9,3 +9,6 @@ Airy-qt_plugin_import.cpp
 *.stash
 compile-coin.sh
 *.user
+*.user.*
+*.user
+Airy-qt.pro.user
