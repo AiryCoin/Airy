@@ -1,0 +1,11 @@
+.DS_Store
+*.Debug
+*.Release
+Airy-qt_plugin_import.cpp
+/build/
+/release/
+/debug/
+/deps/
+*.stash
+compile-coin.sh
+*.user
