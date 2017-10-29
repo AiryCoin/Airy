@@ -12,3 +12,6 @@ compile-coin.sh
 *.user.*
 *.user
 Airy-qt.pro.user
+*.qm
+*.qm
+*.qm
