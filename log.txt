@@ -1,0 +1,37 @@
+Removed plural forms as the target language has less forms.
+If this sounds wrong, possibly the target language is not set or recognized.
+Removed plural forms as the target language has less forms.
+If this sounds wrong, possibly the target language is not set or recognized.
+Removed plural forms as the target language has less forms.
+If this sounds wrong, possibly the target language is not set or recognized.
+Removed plural forms as the target language has less forms.
+If this sounds wrong, possibly the target language is not set or recognized.
+Removed plural forms as the target language has less forms.
+If this sounds wrong, possibly the target language is not set or recognized.
+Removed plural forms as the target language has less forms.
+If this sounds wrong, possibly the target language is not set or recognized.
+Removed plural forms as the target language has less forms.
+If this sounds wrong, possibly the target language is not set or recognized.
+Removed plural forms as the target language has less forms.
+If this sounds wrong, possibly the target language is not set or recognized.
+Removed plural forms as the target language has less forms.
+If this sounds wrong, possibly the target language is not set or recognized.
+Removed plural forms as the target language has less forms.
+If this sounds wrong, possibly the target language is not set or recognized.
+Removed plural forms as the target language has less forms.
+If this sounds wrong, possibly the target language is not set or recognized.
+Removed plural forms as the target language has less forms.
+If this sounds wrong, possibly the target language is not set or recognized.
+Removed plural forms as the target language has less forms.
+If this sounds wrong, possibly the target language is not set or recognized.
+Removed plural forms as the target language has less forms.
+If this sounds wrong, possibly the target language is not set or recognized.
+Removed plural forms as the target language has less forms.
+If this sounds wrong, possibly the target language is not set or recognized.
+cd /media/sf_QT_DEVELOPMENT/blackcoin/src/leveldb && CC=i686-w64-mingw32.static-gcc CXX=i686-w64-mingw32.static-g++ TARGET_OS=OS_WINDOWS_CROSSCOMPILE make OPT="-fno-keep-inline-dllexport -pipe -O2" libleveldb.a libmemenv.a && i686-w64-mingw32.static-ranlib /media/sf_QT_DEVELOPMENT/blackcoin/src/leveldb/libleveldb.a && i686-w64-mingw32.static-ranlib /media/sf_QT_DEVELOPMENT/blackcoin/src/leveldb/libmemenv.a
+make[1]: Entering directory '/media/sf_QT_DEVELOPMENT/blackcoin/src/leveldb'
+make[1]: 'libleveldb.a' is up to date.
+make[1]: 'libmemenv.a' is up to date.
+make[1]: Leaving directory '/media/sf_QT_DEVELOPMENT/blackcoin/src/leveldb'
+i686-w64-mingw32.static-g++ -c -fno-keep-inline-dllexport -pipe -O2 -std=gnu++11 -fdiagnostics-show-option -Wall -Wextra -Wno-ignored-qualifiers -Wformat -Wformat-security -Wno-unused-parameter -Wstack-protector -fexceptions -mthreads -DUNICODE -D_UNICODE -DENABLE_WALLET -DBOOST_THREAD_USE_LIB -DBOOST_SPIRIT_THREADSAFE -DQT_DISABLE_DEPRECATED_BEFORE=0 -DUSE_UPNP=1 -DMINIUPNP_STATICLIB -DSTATICLIB -DWIN32 -D_MT -DBOOST_THREAD_PROVIDES_GENERIC_SHARED_MUTEX_ON_WIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_NEEDS_QMAIN -Isrc -Isrc/json -Isrc/qt -isystem /mnt/mxe/usr/i686-w64-mingw32.static/include -Isrc/leveldb/include -Isrc/leveldb/helpers -isystem /mnt/mxe/usr/i686-w64-mingw32.static/include/boost -isystem /mnt/mxe/usr/i686-w64-mingw32.static/include -isystem /mnt/mxe/usr/i686-w64-mingw32.static/include/openssl -I/mnt/mxe/usr/i686-w64-mingw32.static/qt5/include -I/mnt/mxe/usr/i686-w64-mingw32.static/qt5/include/QtWidgets -I/mnt/mxe/usr/i686-w64-mingw32.static/qt5/include/QtGui -I/mnt/mxe/usr/i686-w64-mingw32.static/qt5/include/QtNetwork -I/mnt/mxe/usr/i686-w64-mingw32.static/qt5/include/QtCore -Ibuild -Ibuild -I/mnt/mxe/usr/i686-w64-mingw32.static/qt5/mkspecs/win32-g++  -o build/chainparams.o src/chainparams.cpp
+Makefile.Release:7496: recipe for target 'build/chainparams.o' failed
