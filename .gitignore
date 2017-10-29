@@ -15,3 +15,4 @@ Airy-qt.pro.user
 *.qm
 *.qm
 *.qm
+src/leveldb/build
