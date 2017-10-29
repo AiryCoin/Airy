@@ -1074,11 +1074,10 @@ bool GetProofOfStakeReward(CTransaction& tx, CTxDB& txdb, int64_t nFees, CBigNum
         bnCentSecond += Coins * Age / CENT;
         Coins /= COIN;
         nSubsidyFactually += CoinCCInterest(Coins, Rate, Age/(365.25L * 24.0L * 3600.0L));
-        LogPrintf("COINage Coins=%s \n nTimeDiff=%d \n bnCentSecond=%s \n Age=%d \n AgeOverYearSeconds=%d \n Days=%d \n SubsidyFactually=%s \n Rate=%d\n", Coins, t - txPrev.nTime, bnCentSecond.ToString(), Age, Age/(365.25 * 24 * 3600), Age/(24 * 3600), nSubsidyFactually.ToString(), Rate);
+        LogPrintf("COINage InputCoins=%s \n InputBlockTime=%s \n bnCentSecond=%s \n Age=%s \n AgeOverYearSeconds=%s \n Days=%s \n MintedCoins=%s \n Rate=%s\n", Coins, txPrev.nTime, bnCentSecond.ToString(), Age, Age/(365.25 * 24 * 3600), Age/(24 * 3600), nSubsidyFactually.ToString(), Rate);
     }
 
     bnCoinDay = bnCentSecond * CENT / COIN / (24 * 60 * 60);
-    LogPrintf("COINage coin*age bnCoinDay=%s\n", bnCoinDay.ToString());
     nCoinAge = (int64_t)bnCoinDay.getuint64();
     LogPrintf("COINage coin*age nCoinAge=%s\n", nCoinAge);
 
