@@ -227,7 +227,7 @@ public:
 
         convertSeed6(vFixedSeeds, pnSeed6_test, ARRAYLEN(pnSeed6_test));
 
-        nTargetSpacing = 200;
+        nTargetSpacing = 180;
         nLastPoWBlock = 0x7fffffff;
         nStartPoSBlock = 0;
     }

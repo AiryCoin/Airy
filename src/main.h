@@ -10,10 +10,10 @@
 #include "sync.h"
 #include "txmempool.h"
 #include "net.h"
-#include "hashblock.h"
 #include "script.h"
 #include "scrypt.h"
 
+#include <limits>
 #include <list>
 
 class CBlock;

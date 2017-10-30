@@ -3,13 +3,13 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+#include "init.h"
 #include "chainparams.h"
 #include "db.h"
 #include "net.h"
 #include "main.h"
 #include "addrman.h"
 #include "ui_interface.h"
-#include "init.h"
 
 #ifdef WIN32
 #include <string.h>
@@ -29,8 +29,6 @@ using namespace std;
 using namespace boost;
 
 static const int MAX_OUTBOUND_CONNECTIONS = 4098;
-bool run_once = true;
-bool did_run = false;
 
 bool OpenNetworkConnection(const CAddress& addrConnect, CSemaphoreGrant *grantOutbound = NULL, const char *strDest = NULL, bool fOneShot = false);
 
@@ -953,22 +951,11 @@ void ThreadSocketHandler()
                     pnode->fDisconnect = true;
                 }
             }
-            // 5 minutes after the MIN_PEER changeover, get rid of old peers
-            if (run_once && nTime >= (MIN_PEER_PROTO_VERSION_WHEN+(60*5))) {
-                did_run = true;
-                if (pnode->nVersion < MIN_PEER_PROTO_VERSION) {
-                    pnode->fDisconnect = true;
-                }
-            }
         }
         {
             LOCK(cs_vNodes);
             BOOST_FOREACH(CNode* pnode, vNodesCopy)
                 pnode->Release();
-        }
-
-        if (did_run) {
-            run_once = false; // outside of loop nodes, if we got rid of min_peers then don't run after that.
         }
     }
 }

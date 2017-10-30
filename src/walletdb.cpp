@@ -620,7 +620,6 @@ DBErrors CWalletDB::LoadWallet(CWallet* pwallet)
         pcursor->close();
     }
     catch (boost::thread_interrupted) {
-        LogPrintf("LoadWallet(); interrupt\n");
         throw;
     }
     catch (...) {
@@ -676,8 +675,8 @@ void ThreadFlushWalletDB(const string& strFile)
     unsigned int nLastSeen = nWalletDBUpdated;
     unsigned int nLastFlushed = nWalletDBUpdated;
     int64_t nLastWalletUpdate = GetTime();
-    while (true) {
-    	boost::this_thread::interruption_point();
+    while (true)
+    {
         MilliSleep(500);
 
         if (nLastSeen != nWalletDBUpdated)

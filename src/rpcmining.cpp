@@ -46,10 +46,7 @@ Value getsubsidy(const Array& params, bool fHelp)
             "getsubsidy [nTarget]\n"
             "Returns proof-of-work subsidy value for the specified value of target.");
 
-    if (!pindexBest)
-        return (uint64_t)0;
-    else
-        return (uint64_t)GetProofOfWorkReward(pindexBest->nHeight, 0);
+    return (uint64_t)GetProofOfWorkReward(pindexBest->nHeight, 0);
 }
 
 Value getstakesubsidy(const Array& params, bool fHelp)

@@ -255,7 +255,6 @@ int CommandLineRPC(int argc, char *argv[])
         }
     }
     catch (boost::thread_interrupted) {
-        LogPrintf("CommandLineRPC() Interrupted\n");
         throw;
     }
     catch (std::exception& e) {
