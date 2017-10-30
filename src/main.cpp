@@ -1149,13 +1149,7 @@ bool IsConfirmedInNPrevBlocks(const CTxIndex& txindex, const CBlockIndex* pindex
     {
         if (pindex->nBlockPos == txindex.pos.nBlockPos && pindex->nFile == txindex.pos.nFile)
         {
-            LogPrint("debug" , "IsConfirmedInNPrevBlocks() : pindex->nBlockPos : %d\n" , pindex->nBlockPos);
-            LogPrint("debug" , "IsConfirmedInNPrevBlocks() : txindex.pos.nBlockPos : %d\n" , txindex.pos.nBlockPos);
-            LogPrint("debug" , "IsConfirmedInNPrevBlocks() : pindex->nFile : %d\n" , pindex->nFile);
-            LogPrint("debug" , "IsConfirmedInNPrevBlocks() : pindex->nHeight : %d\n" , pindex->nHeight);
-            LogPrint("debug" , "IsConfirmedInNPrevBlocks() : pindexFrom->nHeight : %d\n" , pindexFrom->nHeight);
             nActualDepth = pindexFrom->nHeight - pindex->nHeight;
-            LogPrint("debug" , "IsConfirmedInNPrevBlocks() : nActualDepth : %d\n" , nActualDepth);
             return true;
         }
     }
@@ -1886,7 +1880,6 @@ bool CTransaction::GetCoinAge(CTxDB& txdb, const CBlockIndex* pindexPrev, uint64
             int nSpendDepth;
             if (IsConfirmedInNPrevBlocks(txindex, pindexPrev, nStakeMinConfirmations - 1, nSpendDepth))
             {
-                LogPrint("debug", "coin age skip nSpendDepth=%d\n", nSpendDepth + 1);
                 LogPrint("coinage", "coin age skip nSpendDepth=%d\n", nSpendDepth + 1);
                 continue; // only count coins meeting min confirmations requirement
             }
@@ -2342,7 +2335,6 @@ bool CBlock::SignBlock(CWallet& wallet, int64_t nFees)
 {
     // if we are trying to sign
     //    something except proof-of-stake block template
-    LogPrint("debug"," SignBlock() : Trying to Sign Block \n");
     if (!vtx[0].vout[0].IsEmpty())
         return false;
 
@@ -2359,14 +2351,11 @@ bool CBlock::SignBlock(CWallet& wallet, int64_t nFees)
         txCoinStake.nTime &= ~STAKE_TIMESTAMP_MASK;
 
     int64_t nSearchTime = txCoinStake.nTime; // search to current time
-    LogPrint("debug"," SignBlock() : nSearchTime : %d > nLastCoinStakeSearchTime : %d \n" , nSearchTime , nLastCoinStakeSearchTime);
     if (nSearchTime > nLastCoinStakeSearchTime)
     {
         int64_t nSearchInterval = IsProtocolV2(nBestHeight+1) ? 1 : nSearchTime - nLastCoinStakeSearchTime;
-        LogPrint("debug"," SignBlock() : nSearchInterval : %d \n" , nSearchInterval);
         if (wallet.CreateCoinStake(wallet, nBits, nSearchInterval, nFees, txCoinStake, key))
         {
-             LogPrint("debug"," SignBlock() : txCoinStake.nTime : %d > pindexBest->GetPastTimeLimit() : %d \n " , txCoinStake.nTime , pindexBest->GetPastTimeLimit());
             if (txCoinStake.nTime >= pindexBest->GetPastTimeLimit()+1)
             {
                 // make sure coinstake would meet timestamp protocol
