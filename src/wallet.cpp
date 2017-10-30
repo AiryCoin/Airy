@@ -2022,11 +2022,11 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
         if (!txNew.GetCoinAge(txdb, pindexPrev, nCoinAge))
             return error("CreateCoinStake : failed to calculate coin age");
 
-        CBigNum nReward = GetProofOfStakeReward(txNew,txdb, nCoinAge, nFees);
+        int64_t nReward = GetProofOfStakeReward(txNew,txdb, nCoinAge, nFees);
         if (nReward <= 0)
             return false;
 
-        nCredit += nReward.getuint64();
+        nCredit += nReward;
     }
 
     if (nCredit >= GetStakeSplitThreshold())
