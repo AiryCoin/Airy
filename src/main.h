@@ -136,7 +136,7 @@ void ThreadImport(std::vector<boost::filesystem::path> vImportFiles);
 bool CheckProofOfWork(uint256 hash, unsigned int nBits);
 unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfStake);
 int64_t GetProofOfWorkReward(int64_t nHeight, int64_t nFees);
-bool GetProofOfStakeReward(CTransaction& tx, CTxDB& txdb, int64_t nFees, CBigNum &new_reward);
+CBigNum GetProofOfStakeReward(CTransaction tx, CTxDB txdb, int64_t nCoinAge,int64_t nFees);
 bool IsInitialBlockDownload();
 bool IsConfirmedInNPrevBlocks(const CTxIndex& txindex, const CBlockIndex* pindexFrom, int nMaxDepth, int& nActualDepth);
 std::string GetWarnings(std::string strFor);
@@ -653,7 +653,7 @@ public:
     uint256 GetHash() const
     {
         if (nVersion > 6)
-            return Hash9(BEGIN(nVersion), END(nNonce));
+            return Hash(BEGIN(nVersion), END(nNonce));
         else
             return GetPoWHash();
     }

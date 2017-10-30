@@ -2019,25 +2019,14 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
     {
         uint64_t nCoinAge;
         CTxDB txdb("r");
-        int64_t nCalculatedStakeReward;
-        CBigNum nCalculatedStakeReward_bf;
-        CBigNum nNewCalculatedStakeReward;
-        GetProofOfStakeReward(txNew, txdb, nFees, nNewCalculatedStakeReward);
-        int64_t time_on_block = txNew.nTime;
-        time_t past;
+        if (!txNew.GetCoinAge(txdb, pindexPrev, nCoinAge))
+            return error("CreateCoinStake : failed to calculate coin age");
 
-//        if (TestNet()) {
-//            past = APPROX(2017, 10, 3, 0, 0, 0);
-//        } else {
-//            // main net
-//            past = APPROX(2017, 11, 1, 0, 0, 0);
-//        }
+        CBigNum nReward = GetProofOfStakeReward(txNew,txdb, nCoinAge, nFees);
+        if (nReward <= 0)
+            return false;
 
-//        if (time_on_block < past) {
-//            nCredit += nCalculatedStakeReward_bf.getuint64();
-//        } else {
-            nCredit += nNewCalculatedStakeReward.getuint64();
-//        }
+        nCredit += nReward.getuint64();
     }
 
     if (nCredit >= GetStakeSplitThreshold())

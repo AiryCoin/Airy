@@ -47,7 +47,7 @@ CBigNum bnProofOfStakeLimit(~uint256(0) >> 20);
 CBigNum bnProofOfStakeLimitV2(~uint256(0) >> 48);
 
 int nStakeMinConfirmations = 10;
-unsigned int nStakeMinAge =  1 * 60 * 60; // 8 hours
+unsigned int nStakeMinAge =  1 * 60 * 60; // 1 hour
 unsigned int nModifierInterval = 10 * 60; // time to elapse before new modifier is computed
 
 int nCoinbaseMaturity = 5;
@@ -977,18 +977,18 @@ static CBigNum GetProofOfStakeLimit(int nHeight)
 }
 
 // miner's coin base reward
-int64_t GetProofOfWorkReward(int64_t nHeight, int64_t nFees) {
-
+int64_t GetProofOfWorkReward(int64_t nHeight, int64_t nFees)
+{
     int64_t nSubsidy = 0 * COIN;
 
-    if(TestNet())
-    {
-        nSubsidy = 500000 * COIN;
-    }
-    else
-    {
-        nSubsidy = 10000 * COIN;
-    }
+       if(TestNet())
+       {
+           nSubsidy = 500000 * COIN;
+       }
+       else
+       {
+           nSubsidy = 10000 * COIN;
+       }
 
     LogPrint("creation", "GetProofOfWorkReward() : create=%s nSubsidy=%d\n", FormatMoney(nSubsidy), nSubsidy);
 
@@ -1025,76 +1025,16 @@ CBigNum CoinCCInterest(CBigNum P, double r, double t) {
     return CBigNum(amount);
 }
 
-// miner's coin stake reward based on coin age spent (coin-days)
-bool GetProofOfStakeReward(CTransaction& tx, CTxDB& txdb, int64_t nFees, CBigNum &new_reward) {
-	int64_t nCoinAge = 0;
-	uint64_t Age = 0;
-    CBigNum Coins(0);
-    double Rate;
-    int64_t t = tx.nTime;
-    CBigNum nSubsidyFactually(0);
-    Rate = 72.711981L;
+// miner's coin stake reward
+CBigNum GetProofOfStakeReward(CTransaction tx, CTxDB txdb, int64_t nCoinAge,int64_t nFees )
+{
+    CBigNum nSubsidy;
+    nSubsidy = nCoinAge * COIN_YEAR_REWARD * 33 / (365 * 33 + 8);
 
-    // ppcoin: total coin age spent in transaction, in the unit of coin-days.
-	// Only those coins meeting minimum age requirement counts. As those
-	// transactions not in main chain are not currently indexed so we
-	// might not find out about their coin age. Older transactions are
-	// guaranteed to be in main chain by sync-checkpoint. This rule is
-	// introduced to help nodes establish a consistent view of the coin
-	// age (trust score) of competing branches.
+	CBigNum nCalculatedReward = nSubsidy + nFees;
+    LogPrint("creation", "GetProofOfStakeReward(): create=%s nCoinAge=%d nCalculatedReward=%s \n", nSubsidy , nCoinAge , nCalculatedReward);
 
-    CBigNum bnCentSecond = 0;  // coin age in the unit of cent-seconds
-    CBigNum bnCoinDay = 0;
-
-    BOOST_FOREACH(const CTxIn& txin, tx.vin) {
-    	// First try finding the previous transaction in database
-        CTransaction txPrev;
-        CTxIndex txindex;
-        if (!txPrev.ReadFromDisk(txdb, txin.prevout, txindex))
-            continue;  // previous transaction not in main chain
-        if (t < txPrev.nTime) {
-        	LogPrintf("CreateCoinStake : failed to calculate coin age, transaction timestamp violation\n");
-            return false;
-        }
-
-        // Read block header
-        CBlock block;
-        if (!block.ReadFromDisk(txindex.pos.nFile, txindex.pos.nBlockPos, false)) {
-            LogPrintf("CreateCoinStake : unable to read block of previous transaction\n");
-            return false;
-        }
-        if (block.GetBlockTime() + nStakeMinAge > t)
-        {
-            LogPrintf("creation","CreateCoinStake : Coins does not meet minimum age requirement.\n");
-            continue; // only count coins meeting min age requirement
-        }
-
-        Coins = txPrev.vout[txin.prevout.n].nValue;
-        Age = (t-txPrev.nTime);
-        bnCentSecond += Coins * Age / CENT;
-        Coins /= COIN;
-        nSubsidyFactually += CoinCCInterest(Coins, Rate, Age/(365.25L * 24.0L * 3600.0L));
-        LogPrintf("COINage InputCoins=%s \n InputBlockTime=%s \n bnCentSecond=%s \n Age=%s \n AgeOverYearSeconds=%s \n Days=%s \n MintedCoins=%s \n Rate=%s\n", Coins, txPrev.nTime, bnCentSecond.ToString(), Age, Age/(365.25 * 24 * 3600), Age/(24 * 3600), nSubsidyFactually.ToString(), Rate);
-    }
-
-    bnCoinDay = bnCentSecond * CENT / COIN / (24 * 60 * 60);
-    nCoinAge = (int64_t)bnCoinDay.getuint64();
-    LogPrintf("COINage coin*age nCoinAge=%s\n", nCoinAge);
-
-//coinbase_skip:
-
-//    int64_t nSubsidy = nCoinAge * 7200 * CENT * 33 / (365 * 33 + 8);
-//    bnCoinDay *= 7200;
-//    bnCoinDay *= 1000000;
-//    bnCoinDay *= 33;
-//    bnCoinDay /= (365 * 33 + 8);
-
-   // LogPrintf("COIN creation: GetProofOfStakeReward(): create=%s create(as_int64_t)=%d create_bf=%s create_new=%s nCoinAge=%d\n", FormatMoney(nSubsidy), nSubsidy, bnCoinDay.ToString(), nSubsidyFactually.ToString(), nCoinAge);
-
-    //old_reward = nSubsidy + nFees;
-    //old_reward_bf = bnCoinDay + CBigNum(nFees);
-    new_reward = nSubsidyFactually + CBigNum(nFees);
-    return true;
+    return nCalculatedReward;
 }
 
 static const int64_t nTargetTimespan = 16 * 60;  // 16 mins
@@ -1631,18 +1571,19 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
     if (IsProofOfStake())
     {
         // coin: coin stake tx earns reward instead of paying fee
-        CBigNum nNewCalculatedStakeReward;
-        if (!GetProofOfStakeReward(vtx[1], txdb, nFees, nNewCalculatedStakeReward)){
-            return error("ConnectBlock() : %s unable to get proof of stake reward for coinstake", vtx[1].GetHash().ToString());
+        uint64_t nCoinAge;
+        if (!vtx[1].GetCoinAge(txdb, pindex->pprev, nCoinAge)){
+            return error("ConnectBlock() : %s unable to get coin age for coinstake", vtx[1].GetHash().ToString());
         }
+        CBigNum nCalculatedStakeReward = GetProofOfStakeReward(vtx[1] , txdb , nCoinAge, nFees);
 
-        if (nStakeReward > nNewCalculatedStakeReward)
-            return DoS(100, error("ConnectBlock() : coinstake pays too much(actual=%d vs calculated=%d)", nStakeReward, nNewCalculatedStakeReward));
+        if (nStakeReward > nCalculatedStakeReward)
+            return DoS(100, error("ConnectBlock() : coinstake pays too much(actual=%d vs calculated=%d)", nStakeReward, nCalculatedStakeReward));
 
         // coin: track money supply and mint amount info
-        pindex->nMint = nNewCalculatedStakeReward.getuint64() + nFees;
-        pindex->nMoneySupply = (pindex->pprev? pindex->pprev->nMoneySupply : 0) + nNewCalculatedStakeReward.getuint64();
-        LogPrintf("Connect Minted Coins = %d \nMoney Supply = %d \n " ,pindex->nMint , pindex->nMoneySupply );
+        pindex->nMint = nCalculatedStakeReward.getuint64();
+        pindex->nMoneySupply = (pindex->pprev? pindex->pprev->nMoneySupply : 0) + nCalculatedStakeReward.getuint64();
+      //  LogPrintf("Connect Minted Coins = %d \nMoney Supply = %d \n " ,pindex->nMint , pindex->nMoneySupply );
     }
 
 
@@ -1968,13 +1909,10 @@ bool CTransaction::GetCoinAge(CTxDB& txdb, const CBlockIndex* pindexPrev, uint64
 
         int64_t nValueIn = txPrev.vout[txin.prevout.n].nValue;
         bnCentSecond += CBigNum(nValueIn) * (nTime-txPrev.nTime) / CENT;
-
-        LogPrint("debug", "coin age nValueIn=%d nTimeDiff=%d bnCentSecond=%s\n", nValueIn, nTime - txPrev.nTime, bnCentSecond.ToString());
         LogPrint("coinage", "coin age nValueIn=%d nTimeDiff=%d bnCentSecond=%s\n", nValueIn, nTime - txPrev.nTime, bnCentSecond.ToString());
     }
 
     CBigNum bnCoinDay = bnCentSecond * CENT / COIN / (24 * 60 * 60);
-    LogPrint("debug", "coin age bnCoinDay=%s\n", bnCoinDay.ToString());
     LogPrint("coinage", "coin age bnCoinDay=%s\n", bnCoinDay.ToString());
     nCoinAge = bnCoinDay.getuint64();
     return true;

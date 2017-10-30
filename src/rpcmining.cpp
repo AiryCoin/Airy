@@ -71,12 +71,12 @@ Value getstakesubsidy(const Array& params, bool fHelp)
         throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "TX decode failed");
     }
 
-    CBigNum nNewCalculatedStakeReward;
+    uint64_t nCoinAge;
     CTxDB txdb("r");
-    if (!GetProofOfStakeReward(tx, txdb, 0,  nNewCalculatedStakeReward))
-        throw JSONRPCError(RPC_MISC_ERROR, "GetProofOfStakeReward failed");
+    if (!tx.GetCoinAge(txdb, pindexBest, nCoinAge))
+        throw JSONRPCError(RPC_MISC_ERROR, "GetCoinAge failed");
 
-    return nNewCalculatedStakeReward.getuint64();
+    return GetProofOfStakeReward(tx,txdb,nCoinAge, 0).getuint64();
 }
 
     
