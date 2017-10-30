@@ -3,22 +3,22 @@
     <name>AboutDialog</name>
     <message>
         <location filename="../forms/aboutdialog.ui" line="+14"/>
-        <source>About EazyPay</source>
-        <translation>O EazyPay</translation>
+        <source>About Airy</source>
+        <translation>O Airy</translation>
     </message>
     <message>
         <location line="+39"/>
-        <source>&lt;b&gt;EazyPay&lt;/b&gt; version</source>
-        <translation>Verzia &lt;b&gt;EazyPay&lt;/b&gt;</translation>
+        <source>&lt;b&gt;Airy&lt;/b&gt; version</source>
+        <translation>Verzia &lt;b&gt;Airy&lt;/b&gt;</translation>
     </message>
     <message>
         <location line="+41"/>
         <source>Copyright © 2009-2014 The Bitcoin developers
 Copyright © 2012-2014 The NovaCoin developers
-Copyright © 2014 The EazyPay developers</source>
+Copyright © 2014 The Airy developers</source>
         <translation>Copyright © 2009-2014 The Bitcoin developers
 Copyright © 2012-2014 The NovaCoin developers
-Copyright © 2014 The EazyPay developers</translation>
+Copyright © 2014 The Airy developers</translation>
     </message>
     <message>
         <location line="+15"/>
@@ -65,8 +65,8 @@ Tento produkt obsahuje softvér vyvinutý projektom OpenSSL Project pre použiti
     </message>
     <message>
         <location line="-43"/>
-        <source>These are your EazyPay addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
-        <translation>Toto sú vaše EazyPay adresy pre príjem platieb. Možno budete chcieť dať inú každému odosielateľovi, aby ste mohli sledovať, kto Vám platí.</translation>
+        <source>These are your Airy addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
+        <translation>Toto sú vaše Airy adresy pre príjem platieb. Možno budete chcieť dať inú každému odosielateľovi, aby ste mohli sledovať, kto Vám platí.</translation>
     </message>
     <message>
         <location line="+53"/>
@@ -80,8 +80,8 @@ Tento produkt obsahuje softvér vyvinutý projektom OpenSSL Project pre použiti
     </message>
     <message>
         <location line="+7"/>
-        <source>Sign a message to prove you own a EazyPay address</source>
-        <translation>Podpísať správu ako dôkaz, že vlastníte túto EazyPay adresu</translation>
+        <source>Sign a message to prove you own a Airy address</source>
+        <translation>Podpísať správu ako dôkaz, že vlastníte túto Airy adresu</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -95,8 +95,8 @@ Tento produkt obsahuje softvér vyvinutý projektom OpenSSL Project pre použiti
     </message>
     <message>
         <location line="-10"/>
-        <source>Verify a message to ensure it was signed with a specified EazyPay address</source>
-        <translation>Overte správu, aby ste zabezpečili, že bola podpísaná s určitou EazyPay adresou</translation>
+        <source>Verify a message to ensure it was signed with a specified Airy address</source>
+        <translation>Overte správu, aby ste zabezpečili, že bola podpísaná s určitou Airy adresou</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -263,8 +263,8 @@ Tento produkt obsahuje softvér vyvinutý projektom OpenSSL Project pre použiti
     </message>
     <message>
         <location line="+82"/>
-        <source>EazyPay will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your coins from being stolen by malware infecting your computer.</source>
-        <translation>EazyPay sa teraz zavrie aby dokončil proces zašifrovania. Nezabudnite, že zašifrovanie vašej peňaženky nemôže plne chrániť vaše mince pred krádežou malwarom, ktorý napadol váš počítač.</translation>
+        <source>Airy will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your coins from being stolen by malware infecting your computer.</source>
+        <translation>Airy sa teraz zavrie aby dokončil proces zašifrovania. Nezabudnite, že zašifrovanie vašej peňaženky nemôže plne chrániť vaše mince pred krádežou malwarom, ktorý napadol váš počítač.</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -357,8 +357,8 @@ Tento produkt obsahuje softvér vyvinutý projektom OpenSSL Project pre použiti
     </message>
     <message>
         <location line="+4"/>
-        <source>Show information about EazyPay</source>
-        <translation>Zobraziť informácie o EazyPay</translation>
+        <source>Show information about Airy</source>
+        <translation>Zobraziť informácie o Airy</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -397,13 +397,13 @@ Tento produkt obsahuje softvér vyvinutý projektom OpenSSL Project pre použiti
     </message>
     <message>
         <location line="-55"/>
-        <source>Send coins to a EazyPay address</source>
-        <translation>Poslať mince na EazyPay adresu</translation>
+        <source>Send coins to a Airy address</source>
+        <translation>Poslať mince na Airy adresu</translation>
     </message>
     <message>
         <location line="+39"/>
-        <source>Modify configuration options for EazyPay</source>
-        <translation>Upraviť možnosti konfigurácie pre EazyPay</translation>
+        <source>Modify configuration options for Airy</source>
+        <translation>Upraviť možnosti konfigurácie pre Airy</translation>
     </message>
     <message>
         <location line="+17"/>
@@ -443,8 +443,8 @@ Tento produkt obsahuje softvér vyvinutý projektom OpenSSL Project pre použiti
     <message>
         <location line="-214"/>
         <location line="+555"/>
-        <source>EazyPay</source>
-        <translation>EazyPay</translation>
+        <source>Airy</source>
+        <translation>Airy</translation>
     </message>
     <message>
         <location line="-555"/>
@@ -453,8 +453,8 @@ Tento produkt obsahuje softvér vyvinutý projektom OpenSSL Project pre použiti
     </message>
     <message>
         <location line="+193"/>
-        <source>&amp;About EazyPay</source>
-        <translation>&amp;O EazyPay</translation>
+        <source>&amp;About Airy</source>
+        <translation>&amp;O Airy</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -505,13 +505,13 @@ Tento produkt obsahuje softvér vyvinutý projektom OpenSSL Project pre použiti
     <message>
         <location line="+0"/>
         <location line="+58"/>
-        <source>EazyPay client</source>
-        <translation>EazyPay klient</translation>
+        <source>Airy client</source>
+        <translation>Airy klient</translation>
     </message>
     <message numerus="yes">
         <location line="+70"/>
-        <source>%n active connection(s) to EazyPay network</source>
-        <translation><numerusform>%n aktívne spojenie s EazyPay sieťov</numerusform><numerusform>%n aktívnych spojení s EazyPay sieťov</numerusform><numerusform>%n aktívnych spojení s EazyPay sieťou</numerusform></translation>
+        <source>%n active connection(s) to Airy network</source>
+        <translation><numerusform>%n aktívne spojenie s Airy sieťov</numerusform><numerusform>%n aktívnych spojení s Airy sieťov</numerusform><numerusform>%n aktívnych spojení s Airy sieťou</numerusform></translation>
     </message>
     <message>
         <location line="+488"/>
@@ -604,8 +604,8 @@ Adresa: %4</translation>
     <message>
         <location line="-15"/>
         <location line="+15"/>
-        <source>URI can not be parsed! This can be caused by an invalid EazyPay address or malformed URI parameters.</source>
-        <translation>URI nemožno analyzovať! Toto môže byť spôsobené neplatnou EazyPay adresu alebo chybnými URI parametrami.</translation>
+        <source>URI can not be parsed! This can be caused by an invalid Airy address or malformed URI parameters.</source>
+        <translation>URI nemožno analyzovať! Toto môže byť spôsobené neplatnou Airy adresu alebo chybnými URI parametrami.</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -727,8 +727,8 @@ Adresa: %4</translation>
     </message>
     <message>
         <location filename="../bitcoin.cpp" line="+104"/>
-        <source>A fatal error occurred. EazyPay can no longer continue safely and will quit.</source>
-        <translation>Došlo k závažnej chybe. EazyPay už nemôže pokračovať bezpečne a bude ukončený.</translation>
+        <source>A fatal error occurred. Airy can no longer continue safely and will quit.</source>
+        <translation>Došlo k závažnej chybe. Airy už nemôže pokračovať bezpečne a bude ukončený.</translation>
     </message>
 </context>
 <context>
@@ -1061,8 +1061,8 @@ To znamená, že je potrebný poplatok aspoň %2.</translation>
     </message>
     <message>
         <location line="-5"/>
-        <source>The entered address &quot;%1&quot; is not a valid EazyPay address.</source>
-        <translation>Zadaná adresa &quot;%1&quot; nie je platnou EazyPay adresou.</translation>
+        <source>The entered address &quot;%1&quot; is not a valid Airy address.</source>
+        <translation>Zadaná adresa &quot;%1&quot; nie je platnou Airy adresou.</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -1080,8 +1080,8 @@ To znamená, že je potrebný poplatok aspoň %2.</translation>
     <message>
         <location filename="../guiutil.cpp" line="+426"/>
         <location line="+12"/>
-        <source>EazyPay-Qt</source>
-        <translation>EazyPay-Qt</translation>
+        <source>Airy-Qt</source>
+        <translation>Airy-Qt</translation>
     </message>
     <message>
         <location line="-12"/>
@@ -1153,13 +1153,13 @@ To znamená, že je potrebný poplatok aspoň %2.</translation>
     </message>
     <message>
         <location line="+31"/>
-        <source>Automatically start EazyPay after logging in to the system.</source>
-        <translation>Automaticky spustiť EazyPay po prihlásení sa do systému.</translation>
+        <source>Automatically start Airy after logging in to the system.</source>
+        <translation>Automaticky spustiť Airy po prihlásení sa do systému.</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>&amp;Start EazyPay on system login</source>
-        <translation>&amp;Spustiť EazyPay pri prihlásení do systému</translation>
+        <source>&amp;Start Airy on system login</source>
+        <translation>&amp;Spustiť Airy pri prihlásení do systému</translation>
     </message>
     <message>
         <location line="+21"/>
@@ -1168,8 +1168,8 @@ To znamená, že je potrebný poplatok aspoň %2.</translation>
     </message>
     <message>
         <location line="+6"/>
-        <source>Automatically open the EazyPay client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Automaticky otvoriť port klienta EazyPay na routeri. To funguje iba vtedy, ak váš router podporuje UPnP a je povolené.</translation>
+        <source>Automatically open the Airy client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Automaticky otvoriť port klienta Airy na routeri. To funguje iba vtedy, ak váš router podporuje UPnP a je povolené.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1198,8 +1198,8 @@ To znamená, že je potrebný poplatok aspoň %2.</translation>
     </message>
     <message>
         <location line="-57"/>
-        <source>Connect to the EazyPay network through a SOCKS5 proxy (e.g. when connecting through Tor).</source>
-        <translation>Pripojiť k sieti EazyPay cez SOCKS5 proxy (napr. pri pripojení cez Tor).</translation>
+        <source>Connect to the Airy network through a SOCKS5 proxy (e.g. when connecting through Tor).</source>
+        <translation>Pripojiť k sieti Airy cez SOCKS5 proxy (napr. pri pripojení cez Tor).</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1243,8 +1243,8 @@ To znamená, že je potrebný poplatok aspoň %2.</translation>
     </message>
     <message>
         <location line="+13"/>
-        <source>The user interface language can be set here. This setting will take effect after restarting EazyPay.</source>
-        <translation>Tu môžete nastaviť jazyk používateľského rozhrania. Toto nastavenie sa prejaví až po reštartovaní EazyPay.</translation>
+        <source>The user interface language can be set here. This setting will take effect after restarting Airy.</source>
+        <translation>Tu môžete nastaviť jazyk používateľského rozhrania. Toto nastavenie sa prejaví až po reštartovaní Airy.</translation>
     </message>
     <message>
         <location line="+11"/>
@@ -1310,8 +1310,8 @@ To znamená, že je potrebný poplatok aspoň %2.</translation>
     <message>
         <location line="-9"/>
         <location line="+9"/>
-        <source>This setting will take effect after restarting EazyPay.</source>
-        <translation>Toto nastavenie sa prejaví až po reštartovaní EazyPay.</translation>
+        <source>This setting will take effect after restarting Airy.</source>
+        <translation>Toto nastavenie sa prejaví až po reštartovaní Airy.</translation>
     </message>
     <message>
         <location line="+29"/>
@@ -1329,8 +1329,8 @@ To znamená, že je potrebný poplatok aspoň %2.</translation>
     <message>
         <location line="+46"/>
         <location line="+247"/>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the EazyPay network after a connection is established, but this process has not completed yet.</source>
-        <translation>Zobrazené informácie môžu byť zastaralé. Vaša peňaženka sa automaticky synchronizuje so sieťou EazyPay po nadviazaní spojenia, ale tento proces nie je ešte dokončený.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Airy network after a connection is established, but this process has not completed yet.</source>
+        <translation>Zobrazené informácie môžu byť zastaralé. Vaša peňaženka sa automaticky synchronizuje so sieťou Airy po nadviazaní spojenia, ale tento proces nie je ešte dokončený.</translation>
     </message>
     <message>
         <location line="-173"/>
@@ -1403,8 +1403,8 @@ To znamená, že je potrebný poplatok aspoň %2.</translation>
     <name>PaymentServer</name>
     <message>
         <location filename="../paymentserver.cpp" line="+107"/>
-        <source>Cannot start eazypay: click-to-pay handler</source>
-        <translation>EazyPay sa nedá spustiť: click-to-pay handler</translation>
+        <source>Cannot start Airy: click-to-pay handler</source>
+        <translation>Airy sa nedá spustiť: click-to-pay handler</translation>
     </message>
 </context>
 <context>
@@ -1571,8 +1571,8 @@ To znamená, že je potrebný poplatok aspoň %2.</translation>
     </message>
     <message>
         <location line="+7"/>
-        <source>Show the EazyPay-Qt help message to get a list with possible EazyPay command-line options.</source>
-        <translation>Zobraziť EazyPay-Qt nápovedu k získaniu zoznamu pre možnosti  príkazového riadku EazyPay.</translation>
+        <source>Show the Airy-Qt help message to get a list with possible Airy command-line options.</source>
+        <translation>Zobraziť Airy-Qt nápovedu k získaniu zoznamu pre možnosti  príkazového riadku Airy.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1591,13 +1591,13 @@ To znamená, že je potrebný poplatok aspoň %2.</translation>
     </message>
     <message>
         <location line="-104"/>
-        <source>EazyPay - Debug window</source>
-        <translation>EazyPay - Ladiace okno</translation>
+        <source>Airy - Debug window</source>
+        <translation>Airy - Ladiace okno</translation>
     </message>
     <message>
         <location line="+25"/>
-        <source>EazyPay Core</source>
-        <translation>Jadro EazyPay</translation>
+        <source>Airy Core</source>
+        <translation>Jadro Airy</translation>
     </message>
     <message>
         <location line="+256"/>
@@ -1606,8 +1606,8 @@ To znamená, že je potrebný poplatok aspoň %2.</translation>
     </message>
     <message>
         <location line="+7"/>
-        <source>Open the EazyPay debug log file from the current data directory. This can take a few seconds for large log files.</source>
-        <translation>Otvorte EazyPay súbor denníku ladenia z aktuálneho adresára dát. To môže trvať niekoľko sekúnd pre veľké súbory denníka.</translation>
+        <source>Open the Airy debug log file from the current data directory. This can take a few seconds for large log files.</source>
+        <translation>Otvorte Airy súbor denníku ladenia z aktuálneho adresára dát. To môže trvať niekoľko sekúnd pre veľké súbory denníka.</translation>
     </message>
     <message>
         <location line="+102"/>
@@ -1616,8 +1616,8 @@ To znamená, že je potrebný poplatok aspoň %2.</translation>
     </message>
     <message>
         <location filename="../rpcconsole.cpp" line="+325"/>
-        <source>Welcome to the EazyPay RPC console.</source>
-        <translation>Vitajte v konzole EazyPay RPC.</translation>
+        <source>Welcome to the Airy RPC console.</source>
+        <translation>Vitajte v konzole Airy RPC.</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1797,8 +1797,8 @@ To znamená, že je potrebný poplatok aspoň %2.</translation>
     </message>
     <message>
         <location filename="../sendcoinsdialog.cpp" line="-174"/>
-        <source>Enter a EazyPay address (e.g. B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
-        <translation>Zadajte EazyPay adresu (napr. B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</translation>
+        <source>Enter a Airy address (e.g. B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
+        <translation>Zadajte Airy adresu (napr. B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</translation>
     </message>
     <message>
         <location line="+15"/>
@@ -1897,8 +1897,8 @@ To znamená, že je potrebný poplatok aspoň %2.</translation>
     </message>
     <message>
         <location line="+247"/>
-        <source>WARNING: Invalid EazyPay address</source>
-        <translation>UPOZORNENIE: Neplatná EazyPay adresa</translation>
+        <source>WARNING: Invalid Airy address</source>
+        <translation>UPOZORNENIE: Neplatná Airy adresa</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -1971,8 +1971,8 @@ To znamená, že je potrebný poplatok aspoň %2.</translation>
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="+1"/>
-        <source>Enter a EazyPay address (e.g. B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
-        <translation>Zadajte EazyPay adresu (napr. B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</translation>
+        <source>Enter a Airy address (e.g. B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
+        <translation>Zadajte Airy adresu (napr. B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</translation>
     </message>
 </context>
 <context>
@@ -2032,8 +2032,8 @@ To znamená, že je potrebný poplatok aspoň %2.</translation>
     </message>
     <message>
         <location line="+21"/>
-        <source>Sign the message to prove you own this EazyPay address</source>
-        <translation>Podpísať správu ako dôkaz, že vlastníte túto EazyPay adresu</translation>
+        <source>Sign the message to prove you own this Airy address</source>
+        <translation>Podpísať správu ako dôkaz, že vlastníte túto Airy adresu</translation>
     </message>
     <message>
         <location line="+17"/>
@@ -2064,8 +2064,8 @@ To znamená, že je potrebný poplatok aspoň %2.</translation>
     </message>
     <message>
         <location line="+40"/>
-        <source>Verify the message to ensure it was signed with the specified EazyPay address</source>
-        <translation>Overte správu, aby ste sa ubezpečili, že bola podpísaná s danou EazyPay adresou</translation>
+        <source>Verify the message to ensure it was signed with the specified Airy address</source>
+        <translation>Overte správu, aby ste sa ubezpečili, že bola podpísaná s danou Airy adresou</translation>
     </message>
     <message>
         <location line="+17"/>
@@ -2075,8 +2075,8 @@ To znamená, že je potrebný poplatok aspoň %2.</translation>
     <message>
         <location filename="../signverifymessagedialog.cpp" line="+27"/>
         <location line="+3"/>
-        <source>Enter a EazyPay address (e.g. B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
-        <translation>Zadajte EazyPay adresu (napr. B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</translation>
+        <source>Enter a Airy address (e.g. B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
+        <translation>Zadajte Airy adresu (napr. B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</translation>
     </message>
     <message>
         <location line="-2"/>
@@ -2085,8 +2085,8 @@ To znamená, že je potrebný poplatok aspoň %2.</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>Enter EazyPay signature</source>
-        <translation>Zadajte EazyPay podpis</translation>
+        <source>Enter Airy signature</source>
+        <translation>Zadajte Airy podpis</translation>
     </message>
     <message>
         <location line="+85"/>
@@ -2664,8 +2664,8 @@ To znamená, že je potrebný poplatok aspoň %2.</translation>
     <name>bitcoin-core</name>
     <message>
         <location filename="../bitcoinstrings.cpp" line="+171"/>
-        <source>EazyPay version</source>
-        <translation>Verzia EazyPay</translation>
+        <source>Airy version</source>
+        <translation>Verzia Airy</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2674,8 +2674,8 @@ To znamená, že je potrebný poplatok aspoň %2.</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Send command to -server or eazypayd</source>
-        <translation>Pošli príkaz na -server alebo eazypayd</translation>
+        <source>Send command to -server or Airyd</source>
+        <translation>Pošli príkaz na -server alebo Airyd</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2694,13 +2694,13 @@ To znamená, že je potrebný poplatok aspoň %2.</translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>Specify configuration file (default: eazypay.conf)</source>
-        <translation>Zadajte konfiguračný súbor (predvolené: eazypay.conf)</translation>
+        <source>Specify configuration file (default: Airy.conf)</source>
+        <translation>Zadajte konfiguračný súbor (predvolené: Airy.conf)</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Specify pid file (default: eazypayd.pid)</source>
-        <translation>Zadajte pid súbor (predvolené: eazypayd.pid)</translation>
+        <source>Specify pid file (default: Airyd.pid)</source>
+        <translation>Zadajte pid súbor (predvolené: Airyd.pid)</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -2717,24 +2717,24 @@ To znamená, že je potrebný poplatok aspoň %2.</translation>
         <source>%s, you must set a rpcpassword in the configuration file:
 %s
 It is recommended you use the following random password:
-rpcuser=eazypayrpc
+rpcuser=Airyrpc
 rpcpassword=%s
 (you do not need to remember this password)
 The username and password MUST NOT be the same.
 If the file does not exist, create it with owner-readable-only file permissions.
 It is also recommended to set alertnotify so you are notified of problems;
-for example: alertnotify=echo %%s | mail -s &quot;EazyPay Alert&quot; admin@foo.com
+for example: alertnotify=echo %%s | mail -s &quot;Airy Alert&quot; admin@foo.com
 </source>
         <translation>%s, musíte nastaviť rpcpassword v konfiguračnom súbore:
 %s
 Doporučuje sa použiť nasledovné náhodne heslo:
-rpcuser=eazypayrpc
+rpcuser=Airyrpc
 rpcpassword=%s
 (toto heslo si nemusíte pamätať)
 Užívateľské meno a heslo NESMIE byť rovnaké.
 Ak súbor neexistuje, vytvorte ho s právami &quot;môže čítať iba vlastník&quot;.
 Odporúča sa tiež nastaviť &quot;alertnotify&quot;, takže budete upozornení na problémy,
-napríklad: alertnotify=echo %%s | mail -s &quot;EazyPay upozornenie&quot; admin@foo.com
+napríklad: alertnotify=echo %%s | mail -s &quot;Airy upozornenie&quot; admin@foo.com
 </translation>
     </message>
     <message>
@@ -2839,8 +2839,8 @@ napríklad: alertnotify=echo %%s | mail -s &quot;EazyPay upozornenie&quot; admin
     </message>
     <message>
         <location line="-103"/>
-        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong EazyPay will not work properly.</source>
-        <translation>Upozornenie: Skontrolujte, že dátum a čas počítača sú správne! Ak je Váš čas nesprávny EazyPay nebude pracovať správne.</translation>
+        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong Airy will not work properly.</source>
+        <translation>Upozornenie: Skontrolujte, že dátum a čas počítača sú správne! Ak je Váš čas nesprávny Airy nebude pracovať správne.</translation>
     </message>
     <message>
         <location line="+130"/>
@@ -3134,8 +3134,8 @@ napríklad: alertnotify=echo %%s | mail -s &quot;EazyPay upozornenie&quot; admin
     </message>
     <message>
         <location line="+8"/>
-        <source>Initialization sanity check failed. EazyPay is shutting down.</source>
-        <translation>Úvodné kontrolné testy zlyhali. EazyPay sa teraz zatvori.</translation>
+        <source>Initialization sanity check failed. Airy is shutting down.</source>
+        <translation>Úvodné kontrolné testy zlyhali. Airy sa teraz zatvori.</translation>
     </message>
     <message>
         <location line="+20"/>
@@ -3189,13 +3189,13 @@ napríklad: alertnotify=echo %%s | mail -s &quot;EazyPay upozornenie&quot; admin
     </message>
     <message>
         <location line="+4"/>
-        <source>Error loading wallet.dat: Wallet requires newer version of EazyPay</source>
-        <translation>Chyba pri načítaní wallet.dat: Peňaženka vyžaduje novšiu verziu EazyPay</translation>
+        <source>Error loading wallet.dat: Wallet requires newer version of Airy</source>
+        <translation>Chyba pri načítaní wallet.dat: Peňaženka vyžaduje novšiu verziu Airy</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Wallet needed to be rewritten: restart EazyPay to complete</source>
-        <translation>Peňaženka potrebuje byť prepísaná: reštartujte EazyPay k dokončeniu</translation>
+        <source>Wallet needed to be rewritten: restart Airy to complete</source>
+        <translation>Peňaženka potrebuje byť prepísaná: reštartujte Airy k dokončeniu</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -3254,8 +3254,8 @@ napríklad: alertnotify=echo %%s | mail -s &quot;EazyPay upozornenie&quot; admin
     </message>
     <message>
         <location line="+124"/>
-        <source>Unable to bind to %s on this computer. EazyPay is probably already running.</source>
-        <translation>Nemôžem sa pripojiť na %s na tomto počítači. EazyPay je pravdepodobne už beží.</translation>
+        <source>Unable to bind to %s on this computer. Airy is probably already running.</source>
+        <translation>Nemôžem sa pripojiť na %s na tomto počítači. Airy je pravdepodobne už beží.</translation>
     </message>
     <message>
         <location line="-101"/>
@@ -3289,8 +3289,8 @@ napríklad: alertnotify=echo %%s | mail -s &quot;EazyPay upozornenie&quot; admin
     </message>
     <message>
         <location line="+3"/>
-        <source>Cannot obtain a lock on data directory %s. EazyPay is probably already running.</source>
-        <translation>Nedá sa zamknúť dátová zložka %s. EazyPay je pravdepodobne už spustený</translation>
+        <source>Cannot obtain a lock on data directory %s. Airy is probably already running.</source>
+        <translation>Nedá sa zamknúť dátová zložka %s. Airy je pravdepodobne už spustený</translation>
     </message>
     <message>
         <location line="+4"/>

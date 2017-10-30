@@ -3,19 +3,19 @@
     <name>AboutDialog</name>
     <message>
         <location filename="../forms/aboutdialog.ui" line="+14"/>
-        <source>About EazyPay</source>
-        <translation>Über EazyPay</translation>
+        <source>About Airy</source>
+        <translation>Über Airy</translation>
     </message>
     <message>
         <location line="+39"/>
-        <source>&lt;b&gt;EazyPay&lt;/b&gt; version</source>
-        <translation>&lt;b&gt;EazyPay&lt;/b&gt; Version</translation>
+        <source>&lt;b&gt;Airy&lt;/b&gt; version</source>
+        <translation>&lt;b&gt;Airy&lt;/b&gt; Version</translation>
     </message>
     <message>
         <location line="+41"/>
         <source>Copyright © 2009-2014 The Bitcoin developers
 Copyright © 2012-2014 The NovaCoin developers
-Copyright © 2014 The EazyPay developers</source>
+Copyright © 2014 The Airy developers</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -63,8 +63,8 @@ Dieses Produkt enthält Software, die vom OpenSSL-Projekt zur Verwendung im Open
     </message>
     <message>
         <location line="-43"/>
-        <source>These are your EazyPay addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
-        <translation>Das sind Ihre EazyPay Adressen um Zahlungen zu erhalten. Sie werden vielleicht verschiedene an jeden Sender vergeben, damit Sie im Auge behalten können wer Sie bezahlt.</translation>
+        <source>These are your Airy addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
+        <translation>Das sind Ihre Airy Adressen um Zahlungen zu erhalten. Sie werden vielleicht verschiedene an jeden Sender vergeben, damit Sie im Auge behalten können wer Sie bezahlt.</translation>
     </message>
     <message>
         <location line="+53"/>
@@ -78,8 +78,8 @@ Dieses Produkt enthält Software, die vom OpenSSL-Projekt zur Verwendung im Open
     </message>
     <message>
         <location line="+7"/>
-        <source>Sign a message to prove you own a EazyPay address</source>
-        <translation>Signieren Sie eine Nachricht um zu beweisen, dass Sie eine EazyPay Adresse besitzen</translation>
+        <source>Sign a message to prove you own a Airy address</source>
+        <translation>Signieren Sie eine Nachricht um zu beweisen, dass Sie eine Airy Adresse besitzen</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -93,8 +93,8 @@ Dieses Produkt enthält Software, die vom OpenSSL-Projekt zur Verwendung im Open
     </message>
     <message>
         <location line="-10"/>
-        <source>Verify a message to ensure it was signed with a specified EazyPay address</source>
-        <translation>Verifizieren Sie ob eine Nachricht einer bestimmten EazyPay Adresse signiert wurde</translation>
+        <source>Verify a message to ensure it was signed with a specified Airy address</source>
+        <translation>Verifizieren Sie ob eine Nachricht einer bestimmten Airy Adresse signiert wurde</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -261,8 +261,8 @@ Dieses Produkt enthält Software, die vom OpenSSL-Projekt zur Verwendung im Open
     </message>
     <message>
         <location line="+82"/>
-        <source>EazyPay will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your coins from being stolen by malware infecting your computer.</source>
-        <translation>EazyPay wird sich schließen um den Verschlüsselungsvorgang abzuschließen. Beachten Sie, dass die Verschlüsselung Ihrer Wallet keinen vollständigen Schutz vor Diebstahl Ihrer Coins duch auf Ihrem Computer installierte Malware gewährleistet</translation>
+        <source>Airy will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your coins from being stolen by malware infecting your computer.</source>
+        <translation>Airy wird sich schließen um den Verschlüsselungsvorgang abzuschließen. Beachten Sie, dass die Verschlüsselung Ihrer Wallet keinen vollständigen Schutz vor Diebstahl Ihrer Coins duch auf Ihrem Computer installierte Malware gewährleistet</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -355,8 +355,8 @@ Dieses Produkt enthält Software, die vom OpenSSL-Projekt zur Verwendung im Open
     </message>
     <message>
         <location line="+4"/>
-        <source>Show information about EazyPay</source>
-        <translation>Informationen über EazyPay anzeigen</translation>
+        <source>Show information about Airy</source>
+        <translation>Informationen über Airy anzeigen</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -395,13 +395,13 @@ Dieses Produkt enthält Software, die vom OpenSSL-Projekt zur Verwendung im Open
     </message>
     <message>
         <location line="-55"/>
-        <source>Send coins to a EazyPay address</source>
-        <translation>Senden Sie Coins an eine EazyPay Adresse</translation>
+        <source>Send coins to a Airy address</source>
+        <translation>Senden Sie Coins an eine Airy Adresse</translation>
     </message>
     <message>
         <location line="+39"/>
-        <source>Modify configuration options for EazyPay</source>
-        <translation>Konfigurationsoptionen für EazyPay ändern</translation>
+        <source>Modify configuration options for Airy</source>
+        <translation>Konfigurationsoptionen für Airy ändern</translation>
     </message>
     <message>
         <location line="+17"/>
@@ -441,8 +441,8 @@ Dieses Produkt enthält Software, die vom OpenSSL-Projekt zur Verwendung im Open
     <message>
         <location line="-214"/>
         <location line="+555"/>
-        <source>EazyPay</source>
-        <translation>EazyPay</translation>
+        <source>Airy</source>
+        <translation>Airy</translation>
     </message>
     <message>
         <location line="-555"/>
@@ -451,8 +451,8 @@ Dieses Produkt enthält Software, die vom OpenSSL-Projekt zur Verwendung im Open
     </message>
     <message>
         <location line="+193"/>
-        <source>&amp;About EazyPay</source>
-        <translation>&amp;Über EazyPay</translation>
+        <source>&amp;About Airy</source>
+        <translation>&amp;Über Airy</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -503,13 +503,13 @@ Dieses Produkt enthält Software, die vom OpenSSL-Projekt zur Verwendung im Open
     <message>
         <location line="+0"/>
         <location line="+58"/>
-        <source>EazyPay client</source>
-        <translation>EazyPay Anwendung</translation>
+        <source>Airy client</source>
+        <translation>Airy Anwendung</translation>
     </message>
     <message numerus="yes">
         <location line="+70"/>
-        <source>%n active connection(s) to EazyPay network</source>
-        <translation><numerusform>%n aktive Verbindung zum EazyPay Netzwerk</numerusform><numerusform>%n aktive Verbindungen zum EazyPay Netzwerk</numerusform></translation>
+        <source>%n active connection(s) to Airy network</source>
+        <translation><numerusform>%n aktive Verbindung zum Airy Netzwerk</numerusform><numerusform>%n aktive Verbindungen zum Airy Netzwerk</numerusform></translation>
     </message>
     <message>
         <location line="+488"/>
@@ -602,8 +602,8 @@ Adresse: %4</translation>
     <message>
         <location line="-15"/>
         <location line="+15"/>
-        <source>URI can not be parsed! This can be caused by an invalid EazyPay address or malformed URI parameters.</source>
-        <translation>Die URI kann nicht erkannt werden! Die Ursache hierfür kann eine ungültige EazyPay Adresse oder eine fehlerhafte Angabe der URI Parameter sein.</translation>
+        <source>URI can not be parsed! This can be caused by an invalid Airy address or malformed URI parameters.</source>
+        <translation>Die URI kann nicht erkannt werden! Die Ursache hierfür kann eine ungültige Airy Adresse oder eine fehlerhafte Angabe der URI Parameter sein.</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -726,8 +726,8 @@ Adresse: %4</translation>
     </message>
     <message>
         <location filename="../bitcoin.cpp" line="+104"/>
-        <source>A fatal error occurred. EazyPay can no longer continue safely and will quit.</source>
-        <translation>Ein fataler Fehler ist aufgetreten. EazyPay kann nicht fortgesetzt werden und wird beendet.</translation>
+        <source>A fatal error occurred. Airy can no longer continue safely and will quit.</source>
+        <translation>Ein fataler Fehler ist aufgetreten. Airy kann nicht fortgesetzt werden und wird beendet.</translation>
     </message>
 </context>
 <context>
@@ -1046,8 +1046,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="-5"/>
-        <source>The entered address &quot;%1&quot; is not a valid EazyPay address.</source>
-        <translation>Die eingegebene Adresse &quot;%1&quot; ist keine gültige EazyPay Adresse.</translation>
+        <source>The entered address &quot;%1&quot; is not a valid Airy address.</source>
+        <translation>Die eingegebene Adresse &quot;%1&quot; ist keine gültige Airy Adresse.</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -1065,8 +1065,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location filename="../guiutil.cpp" line="+426"/>
         <location line="+12"/>
-        <source>EazyPay-Qt</source>
-        <translation>EazyPay-Qt
+        <source>Airy-Qt</source>
+        <translation>Airy-Qt
 </translation>
     </message>
     <message>
@@ -1139,13 +1139,13 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+31"/>
-        <source>Automatically start EazyPay after logging in to the system.</source>
-        <translation>Automatisch EazyPay starten beim Einloggen in das System.</translation>
+        <source>Automatically start Airy after logging in to the system.</source>
+        <translation>Automatisch Airy starten beim Einloggen in das System.</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>&amp;Start EazyPay on system login</source>
-        <translation>&amp;Starte EazyPay bei Systemstart</translation>
+        <source>&amp;Start Airy on system login</source>
+        <translation>&amp;Starte Airy bei Systemstart</translation>
     </message>
     <message>
         <location line="+21"/>
@@ -1154,8 +1154,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+6"/>
-        <source>Automatically open the EazyPay client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Automatisch den EazyPay client port auf dem Router öffnen. Das funktioniert nur wenn der Router UPnP unterstützt und UPnP aktiviert ist.</translation>
+        <source>Automatically open the Airy client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Automatisch den Airy client port auf dem Router öffnen. Das funktioniert nur wenn der Router UPnP unterstützt und UPnP aktiviert ist.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1184,7 +1184,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="-57"/>
-        <source>Connect to the EazyPay network through a SOCKS5 proxy (e.g. when connecting through Tor).</source>
+        <source>Connect to the Airy network through a SOCKS5 proxy (e.g. when connecting through Tor).</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1229,7 +1229,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+13"/>
-        <source>The user interface language can be set here. This setting will take effect after restarting EazyPay.</source>
+        <source>The user interface language can be set here. This setting will take effect after restarting Airy.</source>
         <translation>Die Sprache der GUI kann hier verändert werden. Die Einstellung wird nach einem Neustart übernommen.</translation>
     </message>
     <message>
@@ -1240,7 +1240,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location line="+13"/>
         <source>Choose the default subdivision unit to show in the interface and when sending coins.</source>
-        <translation>Wählen Sie die Standarduntereinheit, die in der Benutzeroberfläche und beim Überweisen von EazyPays angezeigt werden soll.</translation>
+        <translation>Wählen Sie die Standarduntereinheit, die in der Benutzeroberfläche und beim Überweisen von Airys angezeigt werden soll.</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -1265,7 +1265,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location line="+7"/>
         <source>Use black visual theme (requires restart)</source>
-        <translation>Verwende das schwarze EazyPay Wallet Design (Neustart erforderlich)</translation>
+        <translation>Verwende das schwarze Airy Wallet Design (Neustart erforderlich)</translation>
     </message>
     <message>
         <location line="+71"/>
@@ -1296,7 +1296,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location line="-9"/>
         <location line="+9"/>
-        <source>This setting will take effect after restarting EazyPay.</source>
+        <source>This setting will take effect after restarting Airy.</source>
         <translation>Diese Einstellung wird nach einem Neustart übernommen.</translation>
     </message>
     <message>
@@ -1315,8 +1315,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location line="+46"/>
         <location line="+247"/>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the EazyPay network after a connection is established, but this process has not completed yet.</source>
-        <translation>Die angezeigte Information kann falsch sein. Die Brieftasche synchronisiert automatisch mit dem EazyPay Netzwerk nachdem eine Verbindung zustande gekommen ist, aber dieser Prozess ist nicht abgeschlossen.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Airy network after a connection is established, but this process has not completed yet.</source>
+        <translation>Die angezeigte Information kann falsch sein. Die Brieftasche synchronisiert automatisch mit dem Airy Netzwerk nachdem eine Verbindung zustande gekommen ist, aber dieser Prozess ist nicht abgeschlossen.</translation>
     </message>
     <message>
         <location line="-173"/>
@@ -1389,7 +1389,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <name>PaymentServer</name>
     <message>
         <location filename="../paymentserver.cpp" line="+107"/>
-        <source>Cannot start eazypay: click-to-pay handler</source>
+        <source>Cannot start Airy: click-to-pay handler</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1557,7 +1557,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+7"/>
-        <source>Show the EazyPay-Qt help message to get a list with possible EazyPay command-line options.</source>
+        <source>Show the Airy-Qt help message to get a list with possible Airy command-line options.</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1577,13 +1577,13 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="-104"/>
-        <source>EazyPay - Debug window</source>
-        <translation>EazyPay - Debug Fenster</translation>
+        <source>Airy - Debug window</source>
+        <translation>Airy - Debug Fenster</translation>
     </message>
     <message>
         <location line="+25"/>
-        <source>EazyPay Core</source>
-        <translation>EazyPay Kern</translation>
+        <source>Airy Core</source>
+        <translation>Airy Kern</translation>
     </message>
     <message>
         <location line="+256"/>
@@ -1592,8 +1592,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+7"/>
-        <source>Open the EazyPay debug log file from the current data directory. This can take a few seconds for large log files.</source>
-        <translation>Offne die EazyPay Fehlerlogs aus dem Datenverzeichnis. Diese Funktion kann bei größeren Log-Files länger benötigen.</translation>
+        <source>Open the Airy debug log file from the current data directory. This can take a few seconds for large log files.</source>
+        <translation>Offne die Airy Fehlerlogs aus dem Datenverzeichnis. Diese Funktion kann bei größeren Log-Files länger benötigen.</translation>
     </message>
     <message>
         <location line="+102"/>
@@ -1602,8 +1602,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location filename="../rpcconsole.cpp" line="+325"/>
-        <source>Welcome to the EazyPay RPC console.</source>
-        <translation>Willkommen zur EazyPay RPC Anwendung.</translation>
+        <source>Welcome to the Airy RPC console.</source>
+        <translation>Willkommen zur Airy RPC Anwendung.</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1784,7 +1784,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location filename="../sendcoinsdialog.cpp" line="-174"/>
-        <source>Enter a EazyPay address (e.g. B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
+        <source>Enter a Airy address (e.g. B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
         <translation>Empfängeradresse (z.b. B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</translation>
     </message>
     <message>
@@ -1884,8 +1884,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+247"/>
-        <source>WARNING: Invalid EazyPay address</source>
-        <translation>Warnung: Ungültige EazyPay Adresse</translation>
+        <source>WARNING: Invalid Airy address</source>
+        <translation>Warnung: Ungültige Airy Adresse</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -1958,7 +1958,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="+1"/>
-        <source>Enter a EazyPay address (e.g. B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
+        <source>Enter a Airy address (e.g. B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
         <translation>Empfängeradresse (z.b. B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</translation>
     </message>
 </context>
@@ -2019,8 +2019,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+21"/>
-        <source>Sign the message to prove you own this EazyPay address</source>
-        <translation>Signiere die Nachricht um zu beweisen das du Besitzer dieser EazyPay Adresse bist.</translation>
+        <source>Sign the message to prove you own this Airy address</source>
+        <translation>Signiere die Nachricht um zu beweisen das du Besitzer dieser Airy Adresse bist.</translation>
     </message>
     <message>
         <location line="+17"/>
@@ -2051,7 +2051,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+40"/>
-        <source>Verify the message to ensure it was signed with the specified EazyPay address</source>
+        <source>Verify the message to ensure it was signed with the specified Airy address</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -2062,7 +2062,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location filename="../signverifymessagedialog.cpp" line="+27"/>
         <location line="+3"/>
-        <source>Enter a EazyPay address (e.g. B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
+        <source>Enter a Airy address (e.g. B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
         <translation>Empfängeradresse (z.b. B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</translation>
     </message>
     <message>
@@ -2072,8 +2072,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+3"/>
-        <source>Enter EazyPay signature</source>
-        <translation>EazyPay Signatur eingeben</translation>
+        <source>Enter Airy signature</source>
+        <translation>Airy Signatur eingeben</translation>
     </message>
     <message>
         <location line="+85"/>
@@ -2651,8 +2651,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <name>bitcoin-core</name>
     <message>
         <location filename="../bitcoinstrings.cpp" line="+171"/>
-        <source>EazyPay version</source>
-        <translation>EazyPay Version</translation>
+        <source>Airy version</source>
+        <translation>Airy Version</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2661,8 +2661,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+1"/>
-        <source>Send command to -server or eazypayd</source>
-        <translation>Kommando versenden an -server oder eazypayd </translation>
+        <source>Send command to -server or Airyd</source>
+        <translation>Kommando versenden an -server oder Airyd </translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2681,13 +2681,13 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+2"/>
-        <source>Specify configuration file (default: eazypay.conf)</source>
-        <translation>Konfigurationsdatei angeben (Standard: eazypay.conf)</translation>
+        <source>Specify configuration file (default: Airy.conf)</source>
+        <translation>Konfigurationsdatei angeben (Standard: Airy.conf)</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Specify pid file (default: eazypayd.pid)</source>
-        <translation>PID Datei angeben (Standard: eazypay.pid)</translation>
+        <source>Specify pid file (default: Airyd.pid)</source>
+        <translation>PID Datei angeben (Standard: Airy.pid)</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -2704,13 +2704,13 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <source>%s, you must set a rpcpassword in the configuration file:
 %s
 It is recommended you use the following random password:
-rpcuser=eazypayrpc
+rpcuser=Airyrpc
 rpcpassword=%s
 (you do not need to remember this password)
 The username and password MUST NOT be the same.
 If the file does not exist, create it with owner-readable-only file permissions.
 It is also recommended to set alertnotify so you are notified of problems;
-for example: alertnotify=echo %%s | mail -s &quot;EazyPay Alert&quot; admin@foo.com
+for example: alertnotify=echo %%s | mail -s &quot;Airy Alert&quot; admin@foo.com
 </source>
         <translation type="unfinished"/>
     </message>
@@ -2816,8 +2816,8 @@ for example: alertnotify=echo %%s | mail -s &quot;EazyPay Alert&quot; admin@foo.
     </message>
     <message>
         <location line="-103"/>
-        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong EazyPay will not work properly.</source>
-        <translation>Wanung : Bitte prüfen Sie ob Datum und Uhrzeit richtig eingestellt sind. Wenn das Datum falsch ist wird EazyPay nicht richtig funktionieren.</translation>
+        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong Airy will not work properly.</source>
+        <translation>Wanung : Bitte prüfen Sie ob Datum und Uhrzeit richtig eingestellt sind. Wenn das Datum falsch ist wird Airy nicht richtig funktionieren.</translation>
     </message>
     <message>
         <location line="+130"/>
@@ -3111,7 +3111,7 @@ for example: alertnotify=echo %%s | mail -s &quot;EazyPay Alert&quot; admin@foo.
     </message>
     <message>
         <location line="+8"/>
-        <source>Initialization sanity check failed. EazyPay is shutting down.</source>
+        <source>Initialization sanity check failed. Airy is shutting down.</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -3166,13 +3166,13 @@ for example: alertnotify=echo %%s | mail -s &quot;EazyPay Alert&quot; admin@foo.
     </message>
     <message>
         <location line="+4"/>
-        <source>Error loading wallet.dat: Wallet requires newer version of EazyPay</source>
-        <translation>Fehler beim Laden wallet.dat. Brieftasche benötigt neuere Version der EazyPay Brieftasche.</translation>
+        <source>Error loading wallet.dat: Wallet requires newer version of Airy</source>
+        <translation>Fehler beim Laden wallet.dat. Brieftasche benötigt neuere Version der Airy Brieftasche.</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Wallet needed to be rewritten: restart EazyPay to complete</source>
-        <translation>Brieftasche muss neu geschrieben werden. Starte die EazyPay Brieftasche neu zum komplettieren.</translation>
+        <source>Wallet needed to be rewritten: restart Airy to complete</source>
+        <translation>Brieftasche muss neu geschrieben werden. Starte die Airy Brieftasche neu zum komplettieren.</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -3231,7 +3231,7 @@ for example: alertnotify=echo %%s | mail -s &quot;EazyPay Alert&quot; admin@foo.
     </message>
     <message>
         <location line="+124"/>
-        <source>Unable to bind to %s on this computer. EazyPay is probably already running.</source>
+        <source>Unable to bind to %s on this computer. Airy is probably already running.</source>
         <translation>Fehler beim anbinden %s auf diesem Computer. BlaclCoin Client läuft wahrscheinlich bereits.</translation>
     </message>
     <message>
@@ -3266,7 +3266,7 @@ for example: alertnotify=echo %%s | mail -s &quot;EazyPay Alert&quot; admin@foo.
     </message>
     <message>
         <location line="+3"/>
-        <source>Cannot obtain a lock on data directory %s. EazyPay is probably already running.</source>
+        <source>Cannot obtain a lock on data directory %s. Airy is probably already running.</source>
         <translation type="unfinished"/>
     </message>
     <message>
