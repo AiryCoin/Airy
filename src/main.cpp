@@ -1024,12 +1024,12 @@ CBigNum CoinCCInterest(CBigNum P, double r, double t) {
 }
 
 // miner's coin stake reward
-int64_t GetProofOfStakeReward(const CBlockIndex* pindexPrev, int64_t nCoinAge, int64_t nFees)
+int64_t GetProofOfStakeReward(CTransaction tx, CTxDB txdb, int64_t nCoinAge,int64_t nFees )
 {
     int64_t nSubsidy;
     nSubsidy = nCoinAge * COIN_YEAR_REWARD * 33 / (365 * 33 + 8);
 
-	int64_t nCalculatedReward = nSubsidy + nFees;
+    int64_t nCalculatedReward = nSubsidy + nFees;
     LogPrint("creation", "GetProofOfStakeReward(): create=%s nCoinAge=%d nCalculatedReward=%s \n", nSubsidy , nCoinAge , nCalculatedReward);
 
     return nCalculatedReward;
@@ -1149,7 +1149,13 @@ bool IsConfirmedInNPrevBlocks(const CTxIndex& txindex, const CBlockIndex* pindex
     {
         if (pindex->nBlockPos == txindex.pos.nBlockPos && pindex->nFile == txindex.pos.nFile)
         {
+            LogPrint("debug" , "IsConfirmedInNPrevBlocks() : pindex->nBlockPos : %d\n" , pindex->nBlockPos);
+            LogPrint("debug" , "IsConfirmedInNPrevBlocks() : txindex.pos.nBlockPos : %d\n" , txindex.pos.nBlockPos);
+            LogPrint("debug" , "IsConfirmedInNPrevBlocks() : pindex->nFile : %d\n" , pindex->nFile);
+            LogPrint("debug" , "IsConfirmedInNPrevBlocks() : pindex->nHeight : %d\n" , pindex->nHeight);
+            LogPrint("debug" , "IsConfirmedInNPrevBlocks() : pindexFrom->nHeight : %d\n" , pindexFrom->nHeight);
             nActualDepth = pindexFrom->nHeight - pindex->nHeight;
+            LogPrint("debug" , "IsConfirmedInNPrevBlocks() : nActualDepth : %d\n" , nActualDepth);
             return true;
         }
     }
@@ -1479,7 +1485,7 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
     int64_t nFees = 0;
     int64_t nValueIn = 0;
     int64_t nValueOut = 0;
-    int64_t nStakeReward = 0;
+    CBigNum nStakeReward = 0;
     unsigned int nSigOps = 0;
     BOOST_FOREACH(CTransaction& tx, vtx)
     {
@@ -1534,8 +1540,12 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
             nValueOut += nTxValueOut;
             if (!tx.IsCoinStake())
                 nFees += nTxValueIn - nTxValueOut;
-            if (tx.IsCoinStake())
-                nStakeReward = nTxValueOut - nTxValueIn;
+            if (tx.IsCoinStake()) {
+                nStakeReward = CBigNum(nTxValueOut) - CBigNum(nTxValueIn);
+                if (0 > nStakeReward) {
+                    return DoS(100, error("ConnectBlock() : negative reward value for coinstake"));
+                }
+            }
 
             if (!tx.ConnectInputs(txdb, mapInputs, mapQueuedChanges, posThisTx, pindex, true, false, flags))
                 return false;
@@ -1563,14 +1573,14 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
         if (!vtx[1].GetCoinAge(txdb, pindex->pprev, nCoinAge)){
             return error("ConnectBlock() : %s unable to get coin age for coinstake", vtx[1].GetHash().ToString());
         }
-        int64_t nCalculatedStakeReward = GetProofOfStakeReward(pindex->pprev, nCoinAge, nFees);
+        CBigNum nCalculatedStakeReward = GetProofOfStakeReward(vtx[1] , txdb , nCoinAge, nFees);
 
         if (nStakeReward > nCalculatedStakeReward)
             return DoS(100, error("ConnectBlock() : coinstake pays too much(actual=%d vs calculated=%d)", nStakeReward, nCalculatedStakeReward));
 
         // coin: track money supply and mint amount info
-        pindex->nMint = nCalculatedStakeReward;
-        pindex->nMoneySupply = (pindex->pprev? pindex->pprev->nMoneySupply : 0) + nCalculatedStakeReward;
+        pindex->nMint = nCalculatedStakeReward.getuint64();
+        pindex->nMoneySupply = (pindex->pprev? pindex->pprev->nMoneySupply : 0) + nCalculatedStakeReward.getuint64();
       //  LogPrintf("Connect Minted Coins = %d \nMoney Supply = %d \n " ,pindex->nMint , pindex->nMoneySupply );
     }
 
@@ -1853,7 +1863,7 @@ bool CBlock::SetBestChain(CTxDB& txdb, CBlockIndex* pindexNew)
 // ppcoin: total coin age spent in transaction, in the unit of coin-days.
 // Only those coins meeting minimum age requirement counts. As those
 // transactions not in main chain are not currently indexed so we
-// might not find out about their coin age. Older transactions are 
+// might not find out about their coin age. Older transactions are
 // guaranteed to be in main chain by sync-checkpoint. This rule is
 // introduced to help nodes establish a consistent view of the coin
 // age (trust score) of competing branches.
@@ -1880,6 +1890,7 @@ bool CTransaction::GetCoinAge(CTxDB& txdb, const CBlockIndex* pindexPrev, uint64
             int nSpendDepth;
             if (IsConfirmedInNPrevBlocks(txindex, pindexPrev, nStakeMinConfirmations - 1, nSpendDepth))
             {
+                LogPrint("debug", "coin age skip nSpendDepth=%d\n", nSpendDepth + 1);
                 LogPrint("coinage", "coin age skip nSpendDepth=%d\n", nSpendDepth + 1);
                 continue; // only count coins meeting min confirmations requirement
             }
@@ -2335,6 +2346,7 @@ bool CBlock::SignBlock(CWallet& wallet, int64_t nFees)
 {
     // if we are trying to sign
     //    something except proof-of-stake block template
+    LogPrint("debug"," SignBlock() : Trying to Sign Block \n");
     if (!vtx[0].vout[0].IsEmpty())
         return false;
 
@@ -2351,11 +2363,14 @@ bool CBlock::SignBlock(CWallet& wallet, int64_t nFees)
         txCoinStake.nTime &= ~STAKE_TIMESTAMP_MASK;
 
     int64_t nSearchTime = txCoinStake.nTime; // search to current time
+    LogPrint("debug"," SignBlock() : nSearchTime : %d > nLastCoinStakeSearchTime : %d \n" , nSearchTime , nLastCoinStakeSearchTime);
     if (nSearchTime > nLastCoinStakeSearchTime)
     {
         int64_t nSearchInterval = IsProtocolV2(nBestHeight+1) ? 1 : nSearchTime - nLastCoinStakeSearchTime;
+        LogPrint("debug"," SignBlock() : nSearchInterval : %d \n" , nSearchInterval);
         if (wallet.CreateCoinStake(wallet, nBits, nSearchInterval, nFees, txCoinStake, key))
         {
+             LogPrint("debug"," SignBlock() : txCoinStake.nTime : %d > pindexBest->GetPastTimeLimit() : %d \n " , txCoinStake.nTime , pindexBest->GetPastTimeLimit());
             if (txCoinStake.nTime >= pindexBest->GetPastTimeLimit()+1)
             {
                 // make sure coinstake would meet timestamp protocol
@@ -3327,8 +3342,8 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
 
     // This asymmetric behavior for inbound and outbound connections was introduced
     // to prevent a fingerprinting attack: an attacker can send specific fake addresses
-    // to users' AddrMan and later request them by sending getaddr messages. 
-    // Making users (which are behind NAT and can only make outgoing connections) ignore 
+    // to users' AddrMan and later request them by sending getaddr messages.
+    // Making users (which are behind NAT and can only make outgoing connections) ignore
     // getaddr message mitigates the attack.
     else if ((strCommand == "getaddr") && (pfrom->fInbound))
     {
