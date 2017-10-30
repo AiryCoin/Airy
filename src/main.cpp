@@ -1024,12 +1024,12 @@ CBigNum CoinCCInterest(CBigNum P, double r, double t) {
 }
 
 // miner's coin stake reward
-CBigNum GetProofOfStakeReward(CTransaction tx, CTxDB txdb, int64_t nCoinAge,int64_t nFees )
+int64_t GetProofOfStakeReward(const CBlockIndex* pindexPrev, int64_t nCoinAge, int64_t nFees)
 {
-    CBigNum nSubsidy;
+    int64_t nSubsidy;
     nSubsidy = nCoinAge * COIN_YEAR_REWARD * 33 / (365 * 33 + 8);
 
-	CBigNum nCalculatedReward = nSubsidy + nFees;
+	int64_t nCalculatedReward = nSubsidy + nFees;
     LogPrint("creation", "GetProofOfStakeReward(): create=%s nCoinAge=%d nCalculatedReward=%s \n", nSubsidy , nCoinAge , nCalculatedReward);
 
     return nCalculatedReward;
@@ -1485,7 +1485,7 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
     int64_t nFees = 0;
     int64_t nValueIn = 0;
     int64_t nValueOut = 0;
-    CBigNum nStakeReward = 0;
+    int64_t nStakeReward = 0;
     unsigned int nSigOps = 0;
     BOOST_FOREACH(CTransaction& tx, vtx)
     {
@@ -1540,12 +1540,8 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
             nValueOut += nTxValueOut;
             if (!tx.IsCoinStake())
                 nFees += nTxValueIn - nTxValueOut;
-            if (tx.IsCoinStake()) {
-                nStakeReward = CBigNum(nTxValueOut) - CBigNum(nTxValueIn);
-                if (0 > nStakeReward) {
-                    return DoS(100, error("ConnectBlock() : negative reward value for coinstake"));
-                }
-            }
+            if (tx.IsCoinStake())
+                nStakeReward = nTxValueOut - nTxValueIn;
 
             if (!tx.ConnectInputs(txdb, mapInputs, mapQueuedChanges, posThisTx, pindex, true, false, flags))
                 return false;
@@ -1573,14 +1569,14 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
         if (!vtx[1].GetCoinAge(txdb, pindex->pprev, nCoinAge)){
             return error("ConnectBlock() : %s unable to get coin age for coinstake", vtx[1].GetHash().ToString());
         }
-        CBigNum nCalculatedStakeReward = GetProofOfStakeReward(vtx[1] , txdb , nCoinAge, nFees);
+        int64_t nCalculatedStakeReward = GetProofOfStakeReward(pindex->pprev, nCoinAge, nFees);
 
         if (nStakeReward > nCalculatedStakeReward)
             return DoS(100, error("ConnectBlock() : coinstake pays too much(actual=%d vs calculated=%d)", nStakeReward, nCalculatedStakeReward));
 
         // coin: track money supply and mint amount info
-        pindex->nMint = nCalculatedStakeReward.getuint64();
-        pindex->nMoneySupply = (pindex->pprev? pindex->pprev->nMoneySupply : 0) + nCalculatedStakeReward.getuint64();
+        pindex->nMint = nCalculatedStakeReward;
+        pindex->nMoneySupply = (pindex->pprev? pindex->pprev->nMoneySupply : 0) + nCalculatedStakeReward;
       //  LogPrintf("Connect Minted Coins = %d \nMoney Supply = %d \n " ,pindex->nMint , pindex->nMoneySupply );
     }
 
