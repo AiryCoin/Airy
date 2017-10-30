@@ -1907,7 +1907,7 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
             COutPoint prevoutStake = COutPoint(pcoin.first->GetHash(), pcoin.second);
             int64_t nBlockTime;
            // LogPrint("debug", "CreateCoinStake : nBits : %d\n" , nBits);
-           / LogPrint("debug", "CreateCoinStake : txNew.nTime : %d   - n : %d\n" , txNew.nTime,n);
+           // LogPrint("debug", "CreateCoinStake : txNew.nTime : %d   - n : %d\n" , txNew.nTime,n);
             if (CheckKernel(pindexPrev, nBits, txNew.nTime - n, prevoutStake, &nBlockTime))
             {
                 // Found a kernel
