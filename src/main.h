@@ -56,7 +56,7 @@ static const int64_t COIN_YEAR_REWARD = 7200 * CENT; // ~720% per year
 
 inline bool IsProtocolV1RetargetingFixed(int nHeight) { return TestNet() || nHeight > 38423; }
 inline bool IsProtocolV2(int nHeight) { return TestNet() || nHeight > 319000; }
-inline bool IsProtocolV3(int64_t nTime) { return TestNet() || nTime > 1444028400; }
+inline bool IsProtocolV3(int64_t nTime) { return TestNet() || nTime > 1609380562; } //right now not enabled
 
 inline int64_t FutureDriftV1(int64_t nTime) { return nTime + 10 * 60; }
 inline int64_t FutureDriftV2(int64_t nTime) { return nTime + 15; }
