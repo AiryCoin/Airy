@@ -16,3 +16,4 @@ Airy-qt.pro.user
 *.qm
 *.qm
 src/leveldb/build
+*.autosave

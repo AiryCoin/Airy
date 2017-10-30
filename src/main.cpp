@@ -2696,7 +2696,7 @@ struct CImportingNow
 
 void ThreadImport(std::vector<boost::filesystem::path> vImportFiles)
 {
-    RenameThread("EazyPay-loadblk");
+    RenameThread("Airy-loadblk");
 
     CImportingNow imp;
 

@@ -384,10 +384,10 @@ Value getwork(const Array& params, bool fHelp)
             "If [data] is specified, tries to solve the block and returns true if it was successful.");
 
     if (vNodes.empty())
-        throw JSONRPCError(RPC_CLIENT_NOT_CONNECTED, "EazyPay is not connected!");
+        throw JSONRPCError(RPC_CLIENT_NOT_CONNECTED, "Airy is not connected!");
 
     if (IsInitialBlockDownload())
-        throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD, "EazyPay is downloading blocks...");
+        throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD, "Airy is downloading blocks...");
 
     if (pindexBest->nHeight >= Params().LastPoWBlock())
         throw JSONRPCError(RPC_MISC_ERROR, "No more PoW blocks");
