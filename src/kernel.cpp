@@ -222,8 +222,8 @@ static bool GetKernelStakeModifier(uint256 hashBlockFrom, uint64_t& nStakeModifi
     while (nStakeModifierTime < pindexFrom->GetBlockTime() + nStakeModifierSelectionInterval)
     {
         if (!pindex->pnext)
-        {   // reached best block; may happen if node is behind on block chain
-            LogPrint("debug" , "GetKernelStakeModifier() : pindex->pnext - inner if\n");
+        {
+            // reached best block; may happen if node is behind on block chain
             if (fPrintProofOfStake || (pindex->GetBlockTime() + nStakeMinAge - nStakeModifierSelectionInterval > GetAdjustedTime()))
             {
                  LogPrint("debug" , "GetKernelStakeModifier() : reached best block %s at height %d from block %s",
@@ -317,13 +317,13 @@ static bool CheckStakeKernelHashV1(unsigned int nBits, const CBlock& blockFrom, 
             hashProofOfStake.ToString());
     }
 
-    LogPrint("debug" , "CheckStakeKernelHash() : CBigNum(hashProofOfStake) %s > bnCoinDayWeight %s * bnTargetPerCoinDay %s \n" , CBigNum(hashProofOfStake).ToString(), bnCoinDayWeight.ToString() , bnTargetPerCoinDay.ToString());
+    LogPrint("debug" , "CheckStakeKernelHash() : CBigNum(hashProofOfStake) %s > (bnCoinDayWeight * bnTargetPerCoinDay) : %s \n" , CBigNum(hashProofOfStake).ToString().size(), (bnCoinDayWeight * bnTargetPerCoinDay).ToString().size());
     // Now check if proof-of-stake hash meets target protocol
     if (CBigNum(hashProofOfStake) > bnCoinDayWeight * bnTargetPerCoinDay)
     {
-         LogPrint("debug" , "CheckStakeKernelHash() : Second - false");
         return false;
     }
+
     if (fDebug && !fPrintProofOfStake)
     {
         LogPrintf("CheckStakeKernelHash() : using modifier 0x%016x at height=%d timestamp=%s for block from height=%d timestamp=%s\n",
