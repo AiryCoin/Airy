@@ -563,10 +563,8 @@ void ThreadStakeMiner(CWallet *pwallet)
         //
         int64_t nFees;
         auto_ptr<CBlock> pblock(CreateNewBlock(reservekey, true, &nFees));
-         LogPrint("debug"," ThreadStakeMiner() : pblock.get() : %s \n" , pblock.get());
         if (!pblock.get())
         {
-            LogPrint("debug"," ThreadStakeMiner() : pblock.get() false \n");
             return;
         }
 
