@@ -31,8 +31,7 @@ public:
         DisplayUnit,       // BitcoinUnits::Unit
         Language,          // QString
         CoinControlFeatures, // bool
-        MinimizeCoinAge,   // bool
-		UseBlackTheme,     // bool
+        UseBlackTheme,     // bool
         OptionIDRowCount,
     };
 

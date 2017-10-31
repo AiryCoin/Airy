@@ -6,8 +6,6 @@
 #include <boost/algorithm/string/replace.hpp>
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
-#include <boost/lexical_cast.hpp>
-#include <cmath>
 
 #include "alert.h"
 #include "chainparams.h"
@@ -19,8 +17,6 @@
 #include "txdb.h"
 #include "txmempool.h"
 #include "ui_interface.h"
-#include "util.h"
-#include "univalue.h"
 
 using namespace std;
 using namespace boost;
@@ -975,64 +971,53 @@ static CBigNum GetProofOfStakeLimit(int nHeight)
 }
 
 // miner's coin base reward
-int64_t GetProofOfWorkReward(int64_t nHeight, int64_t nFees)
+int64_t GetProofOfWorkReward(int64_t nFees)
 {
-    int64_t nSubsidy = 0 * COIN;
-
-       if(TestNet())
-       {
-           nSubsidy = 500000 * COIN;
-       }
-       else
-       {
-           nSubsidy = 500000 * COIN;
-       }
+    int64_t nSubsidy = 10000 * COIN;
 
     LogPrint("creation", "GetProofOfWorkReward() : create=%s nSubsidy=%d\n", FormatMoney(nSubsidy), nSubsidy);
 
     return nSubsidy + nFees;
 }
 
-CBigNum CoinCCInterest(CBigNum P, double r, double t) {
-    int64_t amount;
-    double I;
+//CBigNum CoinCCInterest(CBigNum P, double r, double t) {
+//    int64_t amount;
+//    double I;
 
-    LogPrintf("CoinCCInterest (P=%s r=%d t=%d) ", P.ToString(), r, t);
-    if (P < 0) {
-        return CBigNum(0);
-    }
-    I = P.getuint64() * (pow(E, r*t) - 1.0L);
-    std::ostringstream ss;
-    ss.imbue(std::locale::classic());
-    ss.precision(8);
-    ss << std::fixed << I;
-    std::string i_str = ss.str();
-    LogPrintf("i_str=%s ", i_str);
-    if (!ParseFixedPoint(i_str, 8, &amount)) {
-        // Since this is DETERMINISTICALLY failing on very small amounts and very small times yet clearly within the
-        // quoted minimum for ParseFixedPoint(), we will 0 them out.
-        I = 0.0L;
-        amount = 0;
-    }
-    if (amount < 0) {
-        I = 0.0L;
-        amount = 0;
-    }
-    LogPrintf("amount=%d ", amount);
-    LogPrintf("I = %d - Ret: %s\n", I, CBigNum(amount).ToString());
-    return CBigNum(amount);
-}
-
+//    LogPrintf("CoinCCInterest (P=%s r=%d t=%d) ", P.ToString(), r, t);
+//    if (P < 0) {
+//        return CBigNum(0);
+//    }
+//    I = P.getuint64() * (pow(E, r*t) - 1.0L);
+//    std::ostringstream ss;
+//    ss.imbue(std::locale::classic());
+//    ss.precision(8);
+//    ss << std::fixed << I;
+//    std::string i_str = ss.str();
+//    LogPrintf("i_str=%s ", i_str);
+//    if (!ParseFixedPoint(i_str, 8, &amount)) {
+//        // Since this is DETERMINISTICALLY failing on very small amounts and very small times yet clearly within the
+//        // quoted minimum for ParseFixedPoint(), we will 0 them out.
+//        I = 0.0L;
+//        amount = 0;
+//    }
+//    if (amount < 0) {
+//        I = 0.0L;
+//        amount = 0;
+//    }
+//    LogPrintf("amount=%d ", amount);
+//    LogPrintf("I = %d - Ret: %s\n", I, CBigNum(amount).ToString());
+//    return CBigNum(amount);
+//}
 // miner's coin stake reward
-int64_t GetProofOfStakeReward(CTransaction tx, CTxDB txdb, int64_t nCoinAge,int64_t nFees )
+int64_t GetProofOfStakeReward(const CBlockIndex* pindexPrev, int64_t nCoinAge, int64_t nFees)
 {
     int64_t nSubsidy;
     nSubsidy = nCoinAge * COIN_YEAR_REWARD * 33 / (365 * 33 + 8);
 
-    int64_t nCalculatedReward = nSubsidy + nFees;
-    LogPrint("creation", "GetProofOfStakeReward(): create=%s nCoinAge=%d nCalculatedReward=%s \n", nSubsidy , nCoinAge , nCalculatedReward);
+    LogPrint("creation", "GetProofOfStakeReward(): create=%s nCoinAge=%d\n", FormatMoney(nSubsidy), nCoinAge);
 
-    return nCalculatedReward;
+    return nSubsidy + nFees;
 }
 
 static const int64_t nTargetTimespan = 16 * 60;  // 16 mins
@@ -1485,7 +1470,7 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
     int64_t nFees = 0;
     int64_t nValueIn = 0;
     int64_t nValueOut = 0;
-    CBigNum nStakeReward = 0;
+    int64_t nStakeReward = 0;
     unsigned int nSigOps = 0;
     BOOST_FOREACH(CTransaction& tx, vtx)
     {
@@ -1540,12 +1525,8 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
             nValueOut += nTxValueOut;
             if (!tx.IsCoinStake())
                 nFees += nTxValueIn - nTxValueOut;
-            if (tx.IsCoinStake()) {
-                nStakeReward = CBigNum(nTxValueOut) - CBigNum(nTxValueIn);
-                if (0 > nStakeReward) {
-                    return DoS(100, error("ConnectBlock() : negative reward value for coinstake"));
-                }
-            }
+            if (tx.IsCoinStake())
+                nStakeReward = nTxValueOut - nTxValueIn;
 
             if (!tx.ConnectInputs(txdb, mapInputs, mapQueuedChanges, posThisTx, pindex, true, false, flags))
                 return false;
@@ -1556,35 +1537,29 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
 
     if (IsProofOfWork())
     {
-        int64_t nReward = GetProofOfWorkReward(pindex->nHeight, nFees);
+        int64_t nReward = GetProofOfWorkReward(nFees);
         // Check coinbase reward
         if (vtx[0].GetValueOut() > nReward)
             return DoS(50, error("ConnectBlock() : coinbase reward exceeded (actual=%d vs calculated=%d)",
                    vtx[0].GetValueOut(),
                    nReward));
-        // PoW coin: track money supply and mint amount info
-        pindex->nMint = nReward + nFees;
-        pindex->nMoneySupply = (pindex->pprev? pindex->pprev->nMoneySupply : 0) + nReward;
     }
     if (IsProofOfStake())
     {
-        // coin: coin stake tx earns reward instead of paying fee
+        // ppcoin: coin stake tx earns reward instead of paying fee
         uint64_t nCoinAge;
-        if (!vtx[1].GetCoinAge(txdb, pindex->pprev, nCoinAge)){
+        if (!vtx[1].GetCoinAge(txdb, pindex->pprev, nCoinAge))
             return error("ConnectBlock() : %s unable to get coin age for coinstake", vtx[1].GetHash().ToString());
-        }
-        CBigNum nCalculatedStakeReward = GetProofOfStakeReward(vtx[1] , txdb , nCoinAge, nFees);
+
+        int64_t nCalculatedStakeReward = GetProofOfStakeReward(pindex->pprev, nCoinAge, nFees);
 
         if (nStakeReward > nCalculatedStakeReward)
             return DoS(100, error("ConnectBlock() : coinstake pays too much(actual=%d vs calculated=%d)", nStakeReward, nCalculatedStakeReward));
-
-        // coin: track money supply and mint amount info
-        pindex->nMint = nCalculatedStakeReward.getuint64();
-        pindex->nMoneySupply = (pindex->pprev? pindex->pprev->nMoneySupply : 0) + nCalculatedStakeReward.getuint64();
-      //  LogPrintf("Connect Minted Coins = %d \nMoney Supply = %d \n " ,pindex->nMint , pindex->nMoneySupply );
     }
 
-
+    // ppcoin: track money supply and mint amount info
+    pindex->nMint = nValueOut - nValueIn + nFees;
+    pindex->nMoneySupply = (pindex->pprev? pindex->pprev->nMoneySupply : 0) + nValueOut - nValueIn;
     if (!txdb.WriteBlockIndex(CDiskBlockIndex(pindex)))
         return error("Connect() : WriteBlockIndex for pindex failed");
 
@@ -1863,7 +1838,7 @@ bool CBlock::SetBestChain(CTxDB& txdb, CBlockIndex* pindexNew)
 // ppcoin: total coin age spent in transaction, in the unit of coin-days.
 // Only those coins meeting minimum age requirement counts. As those
 // transactions not in main chain are not currently indexed so we
-// might not find out about their coin age. Older transactions are
+// might not find out about their coin age. Older transactions are 
 // guaranteed to be in main chain by sync-checkpoint. This rule is
 // introduced to help nodes establish a consistent view of the coin
 // age (trust score) of competing branches.
@@ -1907,10 +1882,13 @@ bool CTransaction::GetCoinAge(CTxDB& txdb, const CBlockIndex* pindexPrev, uint64
 
         int64_t nValueIn = txPrev.vout[txin.prevout.n].nValue;
         bnCentSecond += CBigNum(nValueIn) * (nTime-txPrev.nTime) / CENT;
+
+        LogPrint("debug", "coin age nValueIn=%d nTimeDiff=%d bnCentSecond=%s\n", nValueIn, nTime - txPrev.nTime, bnCentSecond.ToString());
         LogPrint("coinage", "coin age nValueIn=%d nTimeDiff=%d bnCentSecond=%s\n", nValueIn, nTime - txPrev.nTime, bnCentSecond.ToString());
     }
 
     CBigNum bnCoinDay = bnCentSecond * CENT / COIN / (24 * 60 * 60);
+    LogPrint("debug", "coin age bnCoinDay=%s\n", bnCoinDay.ToString());
     LogPrint("coinage", "coin age bnCoinDay=%s\n", bnCoinDay.ToString());
     nCoinAge = bnCoinDay.getuint64();
     return true;
@@ -2093,7 +2071,7 @@ bool CBlock::AcceptBlock()
     //else if (!IsProtocolV2(nHeight) && nVersion > 6)
       //  return DoS(100, error("AcceptBlock() : reject too new nVersion = %d", nVersion));
 
-    if (IsProofOfWork() && nHeight > Params().LastPoWBlock())
+    if (IsProofOfWork() && nHeight > Params().LastPOWBlock())
         return DoS(100, error("AcceptBlock() : reject proof-of-work at height %d", nHeight));
 
     // Check coinbase timestamp
@@ -2928,7 +2906,6 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
         // Each connection can only send one version message
         if (pfrom->nVersion != 0)
         {
-            LogPrintf("partner %s is misbehaving; disconnecting\n", pfrom->addr.ToString());
             pfrom->Misbehaving(1);
             return false;
         }
@@ -3342,8 +3319,8 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
 
     // This asymmetric behavior for inbound and outbound connections was introduced
     // to prevent a fingerprinting attack: an attacker can send specific fake addresses
-    // to users' AddrMan and later request them by sending getaddr messages.
-    // Making users (which are behind NAT and can only make outgoing connections) ignore
+    // to users' AddrMan and later request them by sending getaddr messages. 
+    // Making users (which are behind NAT and can only make outgoing connections) ignore 
     // getaddr message mitigates the attack.
     else if ((strCommand == "getaddr") && (pfrom->fInbound))
     {

@@ -220,12 +220,8 @@ void OverviewPage::updateAlerts(const QString &warnings)
     this->ui->labelAlerts->setText(warnings);
 }
 
-void OverviewPage::showOutOfSyncWarning(bool fShow) {
-    this->is_out_of_sync = fShow;
+void OverviewPage::showOutOfSyncWarning(bool fShow)
+{
     ui->labelWalletStatus->setVisible(fShow);
     ui->labelTransactionsStatus->setVisible(fShow);
-}
-
-bool OverviewPage::getOutOfSyncWarning(void) {
-    return this->is_out_of_sync;
 }

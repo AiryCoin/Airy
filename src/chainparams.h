@@ -70,7 +70,7 @@ public:
     int RPCPort() const { return nRPCPort; }
     int64_t TargetSpacing() const { return nTargetSpacing; }
     int64_t TargetTimespan() const { return nTargetTimespan; }
-    int LastPoWBlock() const { return nLastPoWBlock; }
+    int LastPOWBlock() const { return nLastPOWBlock; }
     int StartPoSBlock() const { return nStartPoSBlock; }
 protected:
     CChainParams() {}
@@ -89,7 +89,7 @@ protected:
     std::vector<unsigned char> base58Prefixes[MAX_BASE58_TYPES];
     int64_t nTargetSpacing;
     int64_t nTargetTimespan;
-    int nLastPoWBlock;
+    int nLastPOWBlock;
     int nStartPoSBlock;
 };
 

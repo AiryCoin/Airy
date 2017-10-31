@@ -3,7 +3,6 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "init.h"
 #include "chainparams.h"
 #include "db.h"
 #include "net.h"
@@ -670,7 +669,7 @@ void ThreadSocketHandler()
 {
     unsigned int nPrevNodeCount = 0;
 
-    while (!ShutdownRequested())
+    while (true)
     {
         //
         // Disconnect nodes

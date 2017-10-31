@@ -355,7 +355,7 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, int64_t* pFe
             LogPrintf("CreateNewBlock(): total size %u\n", nBlockSize);
 
         if (!fProofOfStake)
-            pblock->vtx[0].vout[0].nValue = GetProofOfWorkReward(nHeight, nFees);
+            pblock->vtx[0].vout[0].nValue = GetProofOfWorkReward(nFees);
 
         if (pFees)
             *pFees = nFees;
@@ -533,7 +533,7 @@ void ThreadStakeMiner(CWallet *pwallet)
     {
         while (pwallet->IsLocked())
         {
-
+             LogPrint("debug"," ThreadStakeMiner() : locked \n");
             nLastCoinStakeSearchInterval = 0;
             MilliSleep(1000);
         }
@@ -552,7 +552,7 @@ void ThreadStakeMiner(CWallet *pwallet)
              LogPrint("debug"," ThreadStakeMiner() : fTryToSync \n");
             if (vNodes.size() < 3 || pindexBest->GetBlockTime() < GetTime() - 10 * 60)
             {
-
+                 LogPrint("debug"," ThreadStakeMiner() : inner \n");
                 MilliSleep(60000);
                 continue;
             }
@@ -563,8 +563,10 @@ void ThreadStakeMiner(CWallet *pwallet)
         //
         int64_t nFees;
         auto_ptr<CBlock> pblock(CreateNewBlock(reservekey, true, &nFees));
+         LogPrint("debug"," ThreadStakeMiner() : pblock.get() : %s \n" , pblock.get());
         if (!pblock.get())
         {
+            LogPrint("debug"," ThreadStakeMiner() : pblock.get() false \n");
             return;
         }
 

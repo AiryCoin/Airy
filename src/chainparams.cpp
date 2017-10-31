@@ -53,11 +53,18 @@ public:
         pchMessageStart[2] = 0x92;
         pchMessageStart[3] = 0xca;
         vAlertPubKey = ParseHex("04c0a58ccbf7fbe847e706167b16ea2784e2b775abac67edee9dbfb419966e9a7ead452e22b283b41074a01547b1fd210a0df2c24f00584d2c3191d8db1866f6bf");
-        nDefaultPort = 56094;
-        nRPCPort = 56095;
+        nDefaultPort = 14814;
+        nRPCPort = 14815;
         bnProofOfWorkLimit = CBigNum(~uint256(0) >> 20);
         bnProofOfStakeLimit = CBigNum(~uint256(0) >> 20);
-
+        // Build the genesis block. Note that the output of the genesis coinbase cannot
+        // be spent as it did not originally exist in the database.
+        //
+       // CBlock(hash=000001faef25dec4fbcf906e6242621df2c183bf232f263d0ba5b101911e4563, ver=1, hashPrevBlock=0000000000000000000000000000000000000000000000000000000000000000, hashMerkleRoot=12630d16a97f24b287c8c2594dda5fb98c9e6c70fc61d44191931ea2aa08dc90, nTime=1393221600, nBits=1e0fffff, nNonce=164482, vtx=1, vchBlockSig=);
+        //  Coinbase(hash=12630d16a9, nTime=1393221600, ver=1, vin.size=1, vout.size=1, nLockTime=0)
+        //    CTxIn(COutPoint(0000000000, 4294967295), coinbase 00012a24323020466562203230313420426974636f696e2041544d7320636f6d6520746f20555341)
+        //    CTxOut(empty)
+        //  vMerkleTree: 12630d16a9
         const char* pszTimestamp = "China LOSES patience with USA after Trump punishes Kim Jong-un’s henchmen"; // Friday, 27-Oct-17
         std::vector<CTxIn> vin;
         vin.resize(1);
@@ -112,9 +119,8 @@ public:
         //
         //        //end
 
-//        vSeeds.push_back(CDNSSeedData("emb_00.0xify.com", "emb_00.0xify.com")); // Underscore FreeBSD Server
-//        vSeeds.push_back(CDNSSeedData("emb_01.0xify.com", "emb_01.0xify.com")); // Underscore Debian Server
-//        vSeeds.push_back(CDNSSeedData("emb_02.0xify.com", "emb_02.0xify.com")); // konez2k VPS
+       // vSeeds.push_back(CDNSSeedData("rat4.Airy.co", "seed.Airy.co"));
+       // vSeeds.push_back(CDNSSeedData("syllabear.tk", "bcseed.syllabear.tk"));
         vFixedSeeds.clear();
         vSeeds.clear();
 
@@ -127,19 +133,19 @@ public:
         convertSeed6(vFixedSeeds, pnSeed6_main, ARRAYLEN(pnSeed6_main));
 
         nTargetSpacing = 180; // Initially ~180 Sec during PoW
-        if(nBestHeight > nLastPoWBlock) // Scaled down for PoS only phase
+        if(nBestHeight > nLastPOWBlock) // Scaled down for PoS only phase
         {
           nTargetSpacing = 180;
         }
         if(nBestHeight > nStartPoSBlock) // Scaled up for PoW/PoS twin phase
         {
-          if(nBestHeight <= nLastPoWBlock)
+          if(nBestHeight <= nLastPOWBlock)
           {
             nTargetSpacing = 400;
           }
         }
         nTargetTimespan = 10 * nTargetSpacing;
-        nLastPoWBlock = 380005;
+        nLastPOWBlock = 380005;
         nStartPoSBlock = 50;
     }
 
@@ -172,10 +178,9 @@ public:
         pchMessageStart[3] = 0xbb;
         bnProofOfWorkLimit = CBigNum(~uint256(0) >> 16);
         bnProofOfStakeLimit = CBigNum(~uint256(0) >> 16);
-
         vAlertPubKey = ParseHex("0464665119d358166c4e114f5c863ae7c00c5f2efd83799482726d490d02056cd83e5e719c078003447e6a2d7d5f7565dfd08954c3185736db3bff30dd90f28f28");
-        nDefaultPort = 55094;
-        nRPCPort = 55095;
+        nDefaultPort = 24814;
+        nRPCPort = 24815;
         strDataDir = "testnet";
 
         // Modify the testnet genesis block so the timestamp is valid for a later start.
@@ -186,7 +191,7 @@ public:
         hashGenesisBlock = genesis.GetHash();
         assert(hashGenesisBlock == uint256("0x0000839de4631dcec831d32751b0ebcb77df983adb73c092afc62e1ac34679c4"));
 
-        hashGenesisBlock = uint256("0x01");
+       // hashGenesisBlock = uint256("0x01");
         if (false && genesis.GetHash() != hashGenesisBlock)
            {
                LogPrintf("Searching for Testnet genesis block...\n");
@@ -228,7 +233,7 @@ public:
         convertSeed6(vFixedSeeds, pnSeed6_test, ARRAYLEN(pnSeed6_test));
 
         nTargetSpacing = 180;
-        nLastPoWBlock = 0x7fffffff;
+        nLastPOWBlock = 0x7fffffff;
         nStartPoSBlock = 0;
     }
     virtual Network NetworkID() const { return CChainParams::TESTNET; }
@@ -247,9 +252,9 @@ public:
         pchMessageStart[2] = 0x56;
         pchMessageStart[3] = 0xbc;
         bnProofOfWorkLimit = CBigNum(~uint256(0) >> 1);
-        genesis.nTime = 1476533000;
+        genesis.nTime = 1411111111;
         genesis.nBits  = bnProofOfWorkLimit.GetCompact();
-        genesis.nNonce = 8;
+        genesis.nNonce = 2;
         hashGenesisBlock = genesis.GetHash();
         nDefaultPort = 30095;
         strDataDir = "regtest";

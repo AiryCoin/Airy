@@ -1001,15 +1001,13 @@ void BitcoinGUI::updateStakingIcon()
 {
     updateWeight();
 
-    if (nLastCoinStakeSearchInterval && nWeight && (!overviewPage->getOutOfSyncWarning()))
+    if (nLastCoinStakeSearchInterval && nWeight)
     {
         uint64_t nWeight = this->nWeight;
         uint64_t nNetworkWeight = GetPoSKernelPS();
-       // LogPrint("debug","updateStakingIcon() : nNetworkWeight : %d --- " , nNetworkWeight);
+        LogPrint("debug","updateStakingIcon() : nNetworkWeight : %d" , nNetworkWeight);
         nWeight /= COIN;
         unsigned nEstimateTime = GetTargetSpacing(nBestHeight) * nNetworkWeight / nWeight;
-       // LogPrint("debug","updateStakingIcon() : nEstimateTime : %d --- " , nEstimateTime);
-       // LogPrint("debug","updateStakingIcon() : nBestHeight : %d ---" , nBestHeight);
 
         QString text;
         if (nEstimateTime < 60)
@@ -1029,11 +1027,11 @@ void BitcoinGUI::updateStakingIcon()
             text = tr("%n day(s)", "", nEstimateTime/(60*60*24));
         }
 
-        // LogPrint("debug"," updateStakingIcon() : nWeight : %d" , nWeight);
+         LogPrint("debug"," updateStakingIcon() : nWeight : %d" , nWeight);
       //nWeight /= COIN;
-         //LogPrint("debug"," updateStakingIcon() : nWeight 2 : %d" , nWeight);
-        //nNetworkWeight /= COIN;
-        //LogPrint("debug"," updateStakingIcon() : nNetworkWeight 2 : %d" , nNetworkWeight);
+         LogPrint("debug"," updateStakingIcon() : nWeight 2 : %d" , nWeight);
+        nNetworkWeight /= COIN;
+        LogPrint("debug"," updateStakingIcon() : nNetworkWeight 2 : %d" , nNetworkWeight);
         labelStakingIcon->setPixmap(QIcon(fUseBlackTheme ? ":/icons/black/staking_on" : ":/icons/staking_on").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
         labelStakingIcon->setToolTip(tr("Staking.<br>Your weight is %1<br>Network weight is %2<br>Expected time to earn reward is %3").arg(nWeight).arg(nNetworkWeight).arg(text));
     }
@@ -1045,8 +1043,6 @@ void BitcoinGUI::updateStakingIcon()
         else if (vNodes.empty())
             labelStakingIcon->setToolTip(tr("Not staking because wallet is offline"));
         else if (IsInitialBlockDownload())
-            labelStakingIcon->setToolTip(tr("Not staking because wallet is syncing"));
-        else if (overviewPage->getOutOfSyncWarning())
             labelStakingIcon->setToolTip(tr("Not staking because wallet is syncing"));
         else if (!nWeight)
             labelStakingIcon->setToolTip(tr("Not staking because you don't have mature coins"));
