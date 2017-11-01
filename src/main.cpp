@@ -2324,7 +2324,7 @@ bool CBlock::SignBlock(CWallet& wallet, int64_t nFees)
 {
     // if we are trying to sign
     //    something except proof-of-stake block template
-    LogPrint("debug"," SignBlock() : Trying to Sign Block \n");
+    //LogPrint("debug"," SignBlock() : Trying to Sign Block \n");
     if (!vtx[0].vout[0].IsEmpty())
         return false;
 
@@ -2341,14 +2341,14 @@ bool CBlock::SignBlock(CWallet& wallet, int64_t nFees)
         txCoinStake.nTime &= ~STAKE_TIMESTAMP_MASK;
 
     int64_t nSearchTime = txCoinStake.nTime; // search to current time
-    LogPrint("debug"," SignBlock() : nSearchTime : %d > nLastCoinStakeSearchTime : %d \n" , nSearchTime , nLastCoinStakeSearchTime);
+   // LogPrint("debug"," SignBlock() : nSearchTime : %d > nLastCoinStakeSearchTime : %d \n" , nSearchTime , nLastCoinStakeSearchTime);
     if (nSearchTime > nLastCoinStakeSearchTime)
     {
         int64_t nSearchInterval = IsProtocolV2(nBestHeight+1) ? 1 : nSearchTime - nLastCoinStakeSearchTime;
-        LogPrint("debug"," SignBlock() : nSearchInterval : %d \n" , nSearchInterval);
+        //LogPrint("debug"," SignBlock() : nSearchInterval : %d \n" , nSearchInterval);
         if (wallet.CreateCoinStake(wallet, nBits, nSearchInterval, nFees, txCoinStake, key))
         {
-             LogPrint("debug"," SignBlock() : txCoinStake.nTime : %d > pindexBest->GetPastTimeLimit() : %d \n " , txCoinStake.nTime , pindexBest->GetPastTimeLimit());
+             //LogPrint("debug"," SignBlock() : txCoinStake.nTime : %d > pindexBest->GetPastTimeLimit() : %d \n " , txCoinStake.nTime , pindexBest->GetPastTimeLimit());
             if (txCoinStake.nTime >= pindexBest->GetPastTimeLimit()+1)
             {
                 // make sure coinstake would meet timestamp protocol

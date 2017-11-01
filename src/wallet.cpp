@@ -1149,7 +1149,7 @@ void CWallet::AvailableCoinsForStaking(vector<COutput>& vCoins, unsigned int nSp
 
             if (pcoin->GetBlocksToMaturity() > 0)
             {
-                LogPrint("debug", "SelectCoinsForStaking(): pcoin->GetBlocksToMaturity()  %d\n", pcoin->GetBlocksToMaturity());
+                //LogPrint("debug", "SelectCoinsForStaking(): pcoin->GetBlocksToMaturity()  %d\n", pcoin->GetBlocksToMaturity());
                 continue;
             }
 
@@ -1363,7 +1363,7 @@ bool CWallet::SelectCoinsForStaking(int64_t nTargetValue, unsigned int nSpendTim
 {
     vector<COutput> vCoins;
     AvailableCoinsForStaking(vCoins, nSpendTime);
-     LogPrint("debug", "SelectCoinsForStaking() : vCoins.size() %s\n", vCoins.size());
+     //LogPrint("debug", "SelectCoinsForStaking() : vCoins.size() %s\n", vCoins.size());
     setCoinsRet.clear();
     nValueRet = 0;
 
@@ -1612,8 +1612,8 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
 
     // Choose coins to use
     int64_t nBalance = GetBalance();
-    LogPrint("debug"," CreateCoinStake() : nBalance : %d \n" , nBalance);
-    LogPrint("debug"," CreateCoinStake() : nReserveBalance : %d \n" , nReserveBalance);
+   // LogPrint("debug"," CreateCoinStake() : nBalance : %d \n" , nBalance);
+   // LogPrint("debug"," CreateCoinStake() : nReserveBalance : %d \n" , nReserveBalance);
     if (nBalance <= nReserveBalance)
         return false;
 
@@ -1622,8 +1622,8 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
     set<pair<const CWalletTx*,unsigned int> > setCoins;
     int64_t nValueIn = 0;
 
-    LogPrint("debug"," CreateCoinStake() : txNew.nTime : %d \n" , txNew.nTime);
-    LogPrint("debug"," CreateCoinStake() :nValueIn : %d \n" , nValueIn);
+    //LogPrint("debug"," CreateCoinStake() : txNew.nTime : %d \n" , txNew.nTime);
+    //LogPrint("debug"," CreateCoinStake() :nValueIn : %d \n" , nValueIn);
     // Select coins with suitable depth
     if (!SelectCoinsForStaking(nBalance - nReserveBalance, txNew.nTime, setCoins, nValueIn))
     {
@@ -1633,7 +1633,7 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
 
     if (setCoins.empty())
     {
-         LogPrint("debug"," CreateCoinStake() :setCoins.empty() \n");
+         //LogPrint("debug"," CreateCoinStake() :setCoins.empty() \n");
         return false;
     }
 
@@ -1655,7 +1655,6 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
             if (CheckKernel(pindexPrev, nBits, txNew.nTime - n, prevoutStake, &nBlockTime))
             {
                 // Found a kernel
-                LogPrint("debug", "CreateCoinStake : kernel found\n");
                 LogPrint("coinstake", "CreateCoinStake : kernel found\n");
                 vector<valtype> vSolutions;
                 txnouttype whichType;
@@ -1663,11 +1662,9 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
                 scriptPubKeyKernel = pcoin.first->vout[pcoin.second].scriptPubKey;
                 if (!Solver(scriptPubKeyKernel, whichType, vSolutions))
                 {
-                    LogPrint("debug", "CreateCoinStake : failed to parse kernel\n");
                     LogPrint("coinstake", "CreateCoinStake : failed to parse kernel\n");
                     break;
                 }
-                LogPrint("debug", "CreateCoinStake : parsed kernel type=%d\n", whichType);
                 LogPrint("coinstake", "CreateCoinStake : parsed kernel type=%d\n", whichType);
                 if (whichType != TX_PUBKEY && whichType != TX_PUBKEYHASH)
                 {
