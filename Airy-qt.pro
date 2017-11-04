@@ -12,7 +12,6 @@ DEFINES += QT_GUI
 DEFINES += __NO_SYSTEM_INCLUDES
 CONFIG += no_include_pwd
 CONFIG += thread
-CONFIG += app_bundle
 win32:CONFIG += static
 win32:QMAKE_CXXFLAGS += -std=c++98
 
@@ -60,7 +59,6 @@ win32:QMAKE_LFLAGS_RELEASE += -static-libgcc -static-libstdc++
 
 # use: qmake "RELEASE=1"
 contains(RELEASE, 1) {
-    message(MAC Release)
     # Mac: compile for maximum compatibility (10.7, 32-bit)
     macx:QMAKE_CXXFLAGS += -mmacosx-version-min=10.7 -arch x86_64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk
 
@@ -103,11 +101,11 @@ isEmpty(MINIUPNPC_LIB_PATH) {
 # platform specific defaults, if not overridden on command line
 isEmpty(BOOST_LIB_SUFFIX) {
     macx:BOOST_LIB_SUFFIX = -mt
-    win32:BOOST_LIB_SUFFIX = -mgw53-1_55
+    win32:BOOST_LIB_SUFFIX = -mgw49-mt-1_55
 }
 
 isEmpty(BOOST_THREAD_LIB_SUFFIX) {
-    win32:BOOST_THREAD_LIB_SUFFIX = -mgw53-mt-1_55
+    win32:BOOST_THREAD_LIB_SUFFIX = $$BOOST_LIB_SUFFIX
     else:BOOST_THREAD_LIB_SUFFIX = $$BOOST_LIB_SUFFIX
 }
 
@@ -137,7 +135,7 @@ isEmpty(BDB_LIB_SUFFIX) {
 }
 
 isEmpty(BDB_INCLUDE_PATH) {
-    macx:BDB_INCLUDE_PATH = /usr/local/Cellar/berkeley-db/6.2.32/include/
+    macx:BDB_INCLUDE_PATH = /usr/local/Cellar/berkeley-db/6.2.32/include
     linux:BDB_INCLUDE_PATH = /usr/local/BerkeleyDB6.2/include
     win32:BDB_INCLUDE_PATH=$$PWD/deps/db-6.1.26/build_unix
 }
@@ -149,7 +147,7 @@ isEmpty(BOOST_LIB_PATH) {
 
 isEmpty(BOOST_INCLUDE_PATH) {
     macx:BOOST_INCLUDE_PATH = /usr/local/Cellar/boost/1.65.1/include
-    win32:BOOST_INCLUDE_PATH=$$PWD/deps/boost_1_55_0
+    win32:BOOST_INCLUDE_PATH=$$PWD/deps/boost_1_55_0/boost
 }
 
 # use: qmake "USE_QRCODE=1"
@@ -486,8 +484,7 @@ macx:QMAKE_CXXFLAGS_THREAD += -pthread
 macx:QMAKE_INFO_PLIST = share/qt/Info.plist
 
 # Set libraries and includes at end, to use platform-defined defaults if not overridden
-BOOST_INCLUDE_PATH=/usr/local/Cellar/boost/1.65.0/include/
-_BOOST_PATH=/usr/local/Cellar/boost/1.65.0/
+
 INCLUDEPATH += $$BOOST_INCLUDE_PATH
 INCLUDEPATH += $$BDB_INCLUDE_PATH
 INCLUDEPATH += $$OPENSSL_INCLUDE_PATH
@@ -496,7 +493,6 @@ LIBS += $$join(BOOST_LIB_PATH,,-L,)
 LIBS += $$join(BDB_LIB_PATH,,-L,)
 LIBS += $$join(OPENSSL_LIB_PATH,,-L,)
 LIBS += $$join(QRENCODE_LIB_PATH,,-L,)
-LIBS += -L$${_BOOST_PATH}/lib
 LIBS += -lssl
 LIBS += -lcrypto
 LIBS += -ldb_cxx$$BDB_LIB_SUFFIX
@@ -504,9 +500,6 @@ linux:LIBS += -lboost_system-mt
 linux:LIBS += -lboost_filesystem-mt
 linux:LIBS += -lboost_program_options-mt
 LIBS += -lboost_thread$$BOOST_THREAD_LIB_SUFFIX
-macos:LIBS += -lboost_system$$BOOST_LIB_SUFFIX
-macos:LIBS += -lboost_filesystem$$BOOST_LIB_SUFFIX
-macos:LIBS += -lboost_program_options$$BOOST_LIB_SUFFIX
 windows:LIBS += -lboost_system$$BOOST_LIB_SUFFIX
 windows:LIBS += -lboost_filesystem$$BOOST_LIB_SUFFIX
 windows:LIBS += -lboost_program_options$$BOOST_LIB_SUFFIX
