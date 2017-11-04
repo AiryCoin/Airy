@@ -12,7 +12,6 @@ DEFINES += QT_GUI
 DEFINES += __NO_SYSTEM_INCLUDES
 CONFIG += no_include_pwd
 CONFIG += thread
-macx:CONFIG += static
 win32:CONFIG += static
 win32:QMAKE_CXXFLAGS += -std=c++98
 
