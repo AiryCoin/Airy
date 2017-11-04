@@ -40,9 +40,6 @@ double GetDifficulty(const CBlockIndex* blockindex)
         dDiff /= 256.0;
         nShift--;
     }
-   //  LogPrint("debug"," GetDifficulty() :nShift : %d \n" , nShift);
-   //  LogPrint("debug"," GetDifficulty() :blockindex->nBits : %d \n" , blockindex->nBits);
-    // LogPrint("debug"," GetDifficulty() :dDiff : %d \n" , dDiff);
     return dDiff;
 }
 
@@ -89,9 +86,7 @@ double GetPoSKernelPS()
             if (pindexPrevStake)
             {
                 dStakeKernelsTriedAvg += GetDifficulty(pindexPrevStake) * 4294967296.0;
-               // LogPrint("debug"," GetPoSKernelPS() : dStakeKernelsTriedAvg loop : %d \t" , dStakeKernelsTriedAvg);
                 nStakesTime += pindexPrevStake->nTime - pindex->nTime;
-              //  LogPrint("debug"," GetPoSKernelPS() : nStakesTime loop : %d \n \n \n" , nStakesTime);
                 nStakesHandled++;
             }
             pindexPrevStake = pindex;
@@ -99,20 +94,13 @@ double GetPoSKernelPS()
 
         pindex = pindex->pprev;
     }
-    LogPrint("debug"," GetPoSKernelPS() : dStakeKernelsTriedAvg : %d \n" , dStakeKernelsTriedAvg);
-    LogPrint("debug"," GetPoSKernelPS() : nStakesHandled : %d \n" , nStakesHandled);
     double result = 0;
-    LogPrint("debug"," GetPoSKernelPS() : nStakesTime : %d \n" , nStakesTime);
-    LogPrint("debug"," GetPoSKernelPS() : nBestHeight : %d" , nBestHeight);
     if (nStakesTime)
-         LogPrint("debug"," GetPoSKernelPS() : First IF \n");
         result = dStakeKernelsTriedAvg / nStakesTime;
 
     if (IsProtocolV2(nBestHeight))
-        LogPrint("debug"," GetPoSKernelPS() : Second IF \n");
         result *= STAKE_TIMESTAMP_MASK + 1;
 
-     LogPrint("debug"," GetPoSKernelPS() : result : %lf \n" , result);
     return result;
 }
 
