@@ -1130,13 +1130,11 @@ void CWallet::AvailableCoinsForStaking(vector<COutput>& vCoins, unsigned int nSp
             const CWalletTx* pcoin = &(*it).second;
 
             int nDepth = pcoin->GetDepthInMainChain();
-          // LogPrint("debug", "SelectCoinsForStaking(): nDepth  %d\n", nDepth);
             if (nDepth < 1)
                 continue;
 
             if (IsProtocolV3(nSpendTime))
             {
-                // LogPrint("debug", "SelectCoinsForStaking(): IsProtocolV3  %d\n", nSpendTime);
                 if (nDepth < nStakeMinConfirmations)
                     continue;
             }
@@ -1149,7 +1147,6 @@ void CWallet::AvailableCoinsForStaking(vector<COutput>& vCoins, unsigned int nSp
 
             if (pcoin->GetBlocksToMaturity() > 0)
             {
-                //LogPrint("debug", "SelectCoinsForStaking(): pcoin->GetBlocksToMaturity()  %d\n", pcoin->GetBlocksToMaturity());
                 continue;
             }
 
@@ -1363,7 +1360,6 @@ bool CWallet::SelectCoinsForStaking(int64_t nTargetValue, unsigned int nSpendTim
 {
     vector<COutput> vCoins;
     AvailableCoinsForStaking(vCoins, nSpendTime);
-     //LogPrint("debug", "SelectCoinsForStaking() : vCoins.size() %s\n", vCoins.size());
     setCoinsRet.clear();
     nValueRet = 0;
 
@@ -1612,8 +1608,6 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
 
     // Choose coins to use
     int64_t nBalance = GetBalance();
-   // LogPrint("debug"," CreateCoinStake() : nBalance : %d \n" , nBalance);
-   // LogPrint("debug"," CreateCoinStake() : nReserveBalance : %d \n" , nReserveBalance);
     if (nBalance <= nReserveBalance)
         return false;
 
@@ -1622,18 +1616,14 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
     set<pair<const CWalletTx*,unsigned int> > setCoins;
     int64_t nValueIn = 0;
 
-    //LogPrint("debug"," CreateCoinStake() : txNew.nTime : %d \n" , txNew.nTime);
-    //LogPrint("debug"," CreateCoinStake() :nValueIn : %d \n" , nValueIn);
     // Select coins with suitable depth
     if (!SelectCoinsForStaking(nBalance - nReserveBalance, txNew.nTime, setCoins, nValueIn))
     {
-        LogPrint("debug"," CreateCoinStake() :!SelectCoinsForStaking \n");
         return false;
     }
 
     if (setCoins.empty())
     {
-         //LogPrint("debug"," CreateCoinStake() :setCoins.empty() \n");
         return false;
     }
 
@@ -1704,7 +1694,6 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
                 nCredit += pcoin.first->vout[pcoin.second].nValue;
                 vwtxPrev.push_back(pcoin.first);
                 txNew.vout.push_back(CTxOut(0, scriptPubKeyOut));
-                LogPrint("debug", "CreateCoinStake : added kernel type=%d\n", whichType);
 
                 LogPrint("coinstake", "CreateCoinStake : added kernel type=%d\n", whichType);
                 fKernelFound = true;

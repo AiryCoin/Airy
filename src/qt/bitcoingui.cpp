@@ -1005,7 +1005,6 @@ void BitcoinGUI::updateStakingIcon()
     {
         uint64_t nWeight = this->nWeight;
         uint64_t nNetworkWeight = GetPoSKernelPS();
-        LogPrint("debug","updateStakingIcon() : nNetworkWeight : %d" , nNetworkWeight);
         nWeight /= COIN;
         unsigned nEstimateTime = GetTargetSpacing(nBestHeight) * nNetworkWeight / nWeight;
 
@@ -1027,11 +1026,7 @@ void BitcoinGUI::updateStakingIcon()
             text = tr("%n day(s)", "", nEstimateTime/(60*60*24));
         }
 
-         LogPrint("debug"," updateStakingIcon() : nWeight : %d" , nWeight);
-      //nWeight /= COIN;
-         LogPrint("debug"," updateStakingIcon() : nWeight 2 : %d" , nWeight);
         nNetworkWeight /= COIN;
-        LogPrint("debug"," updateStakingIcon() : nNetworkWeight 2 : %d" , nNetworkWeight);
         labelStakingIcon->setPixmap(QIcon(fUseBlackTheme ? ":/icons/black/staking_on" : ":/icons/staking_on").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
         labelStakingIcon->setToolTip(tr("Staking.<br>Your weight is %1<br>Network weight is %2<br>Expected time to earn reward is %3").arg(nWeight).arg(nNetworkWeight).arg(text));
     }

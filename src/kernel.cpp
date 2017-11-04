@@ -221,11 +221,8 @@ static bool GetKernelStakeModifier(uint256 hashBlockFrom, uint64_t& nStakeModifi
     {
         if (!pindex->pnext)
         {   // reached best block; may happen if node is behind on block chain
-            LogPrint("debug" , "GetKernelStakeModifier() : pindex->pnext - inner if\n");
             if (fPrintProofOfStake || (pindex->GetBlockTime() + nStakeMinAge - nStakeModifierSelectionInterval > GetAdjustedTime()))
             {
-                 LogPrint("debug" , "GetKernelStakeModifier() : reached best block %s at height %d from block %s",
-                          pindex->GetBlockHash().ToString(), pindex->nHeight, hashBlockFrom.ToString());
                 return error("GetKernelStakeModifier() : reached best block %s at height %d from block %s",
                     pindex->GetBlockHash().ToString(), pindex->nHeight, hashBlockFrom.ToString());
             }
@@ -245,7 +242,6 @@ static bool GetKernelStakeModifier(uint256 hashBlockFrom, uint64_t& nStakeModifi
     LogPrint("debug" , "GetKernelStakeModifier() : pindexFrom : %s \n" , pindexFrom->nHeight);
     LogPrint("debug" , "GetKernelStakeModifier() : pindex->pnext : %s \n" , pindex->nHeight);
     LogPrint("debug", "GetKernelStakeModifier() : Time Difference : %d \n" , (pindexFrom->GetBlockTime() - pindex->GetBlockTime()));
-    LogPrint("debug" , "GetKernelStakeModifier() : nStakeModifier : %s" ,nStakeModifier );
     return true;
 }
 
@@ -276,7 +272,6 @@ static bool CheckStakeKernelHashV1(unsigned int nBits, const CBlock& blockFrom, 
         return error("CheckStakeKernelHash() : nTime violation");
 
     unsigned int nTimeBlockFrom = blockFrom.GetBlockTime();
-    LogPrint("debug" , "CheckStakeKernelHash() : nTimeBlockFrom - %d \n" , nTimeBlockFrom);
     CBigNum bnTargetPerCoinDay;
     bnTargetPerCoinDay.SetCompact(nBits);
     int64_t nValueIn = txPrev.vout[prevout.n].nValue;
@@ -284,7 +279,6 @@ static bool CheckStakeKernelHashV1(unsigned int nBits, const CBlock& blockFrom, 
     uint256 hashBlockFrom = blockFrom.GetHash();
 
     CBigNum bnCoinDayWeight = CBigNum(nValueIn) * GetWeight((int64_t)txPrev.nTime, (int64_t)nTimeTx) / COIN / (24 * 60 * 60);
-    LogPrint("debug" , "CheckStakeKernelHash() : bnCoinDayWeight - %s \n" , bnCoinDayWeight.ToString());
     targetProofOfStake = (bnCoinDayWeight * bnTargetPerCoinDay).getuint256();
 
     // Calculate hash
