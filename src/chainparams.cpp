@@ -119,10 +119,11 @@ public:
         //
         //        //end
 
-       // vSeeds.push_back(CDNSSeedData("rat4.Airy.co", "seed.Airy.co"));
+        //vSeeds.push_back(CDNSSeedData("dns1.otesdns.online", "dns1.otesdns.online"));
+        vSeeds.push_back(CDNSSeedData("dns1.otesdns.online", "dns1.otesdns.online"));
        // vSeeds.push_back(CDNSSeedData("syllabear.tk", "bcseed.syllabear.tk"));
-        vFixedSeeds.clear();
-        vSeeds.clear();
+        //vFixedSeeds.clear();
+        //vSeeds.clear();
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,23);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,83);
