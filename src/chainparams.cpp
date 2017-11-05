@@ -120,7 +120,7 @@ public:
         //        //end
 
         //vSeeds.push_back(CDNSSeedData("dns1.otesdns.online", "dns1.otesdns.online"));
-        vSeeds.push_back(CDNSSeedData("seed1", "seed1.otesdns.xyz"));
+        vSeeds.push_back(CDNSSeedData("ns1.otesdns.xyz", "ns1.otesdns.xyz"));
        // vSeeds.push_back(CDNSSeedData("syllabear.tk", "bcseed.syllabear.tk"));
         //vFixedSeeds.clear();
         //vSeeds.clear();
